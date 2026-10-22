@@ -17,3 +17,11 @@ Atalhos: `V` seleção, `T` texto, `A` chamada, `F` ajustar à tela, `Ctrl/⌘+S
 A prancha é ajustada à largura disponível na abertura e ao redimensionar a janela. O controle manual de zoom suspende o ajuste automático até acionar Ajustar à tela. A impressão mantém folhas A4 sem os painéis.
 
 Esta versão é uma cópia independente. O salvamento automático usa chave própria e não altera os projetos salvos na versão anterior. Para transferir edições, exporte o JSON na versão anterior e use Abrir projeto nesta versão. O layout da sala e seus quantitativos já acompanham a abertura inicial.
+
+## Revisão de 22/10/2026
+
+- Tabelas separadas para novos itens (aquisição) e itens existentes (sem compra), tanto no editor quanto nas pranchas. Use Tabela de destino nas propriedades do móvel ou no editor das tabelas. Móveis do mesmo tipo podem ser distribuídos entre as duas tabelas com quantidades independentes.
+- Cortina M12 incluída na janela P01, do forro ao piso. Referências de 1,90 m de largura e 2,85 m de altura; conferir instalação e folgas no local. Cor e tecido a definir.
+- P02: porta cinza, retoque da folha/painel e das vistas/guarnições nas duas faces e plaquinha Sala do Bem-Estar.
+- P03: vista da lateral da maca, porta fechada com indicação Não abrir e adesivo cinza na janela. Altura e peitoril da janela, bem como o material do fechamento, precisam de conferência local.
+- Projetos locais anteriores são migrados sem reposicionar objetos ou restaurar móveis excluídos. A cortina é inserida uma vez; exclusões posteriores são respeitadas. O aparador não foi excluído automaticamente.
