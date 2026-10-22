@@ -1,27 +1,17 @@
-# Sala de Bem-Estar — Interface V2
+# Sala de Bem-Estar · RV07
 
-Abra pelo GitHub Pages. Arquivos: `index.html`, `css/estilos.css`, `js/editor.js`, `js/recursos.js` e `imagens/logo.webp`.
+Editor modular com layout aprovado, pranchas A4 e imagens incorporadas às exportações.
 
-A logomarca pode ser substituída em **Dados da prancha → Carregar / trocar logomarca**. Aceita PNG, JPG e WebP. O mural floral foi retirado; as paredes permanecem sem arte predefinida.
+- M13: suporte para TV de 55 polegadas, item novo, símbolo circular cinza atrás da TV.
+- Cortina P01: 2,70 m de altura de referência, barra ao menos 15 cm acima do piso e acima do rodapé.
+- Plaquinha de 45 × 15 cm na face externa da porta P02, voltada ao corredor.
+- P03: maca em vista, vaso à direita, janela 1,08 × 0,75 m e adesivo cinza 0,81 m².
+- Aparador existente; responsável WEMELLI E RUBENS.
+- Todas as tabelas editáveis: mobiliário, fornecedores e checklist. Títulos, células, linhas e colunas; clique inclusive nas células vazias dos fornecedores para editar.
+- O checklist inclui os sete itens novos e três linhas livres para novas lojas; tabelas extensas continuam em novas folhas automaticamente.
+- Textos vetoriais das pranchas podem ser editados/excluídos. Desfazer e refazer disponíveis.
+- Salvar projeto gera JSON; Baixar HTML gera arquivo completo offline com imagens e estado atual.
 
-**Salvar projeto** exporta JSON com a logomarca e o estado editável. **Baixar HTML** incorpora CSS, JavaScript e imagens em um arquivo offline. O salvamento automático pertence ao navegador, sem sincronização entre dispositivos.
+Estrutura: index.html, css/estilos.css, js/editor.js, js/interface.js, js/recursos.js, imagens/logo.webp e imagens/mural.webp.
 
-Para desenvolver localmente: `python -m http.server 8000` na raiz do repositório e abrir `/projetos/sala-bem-estar-v2/`. A versão modular deve ser servida por HTTP; para compartilhar offline use Baixar HTML.
-
-## Interface responsiva
-
-Barra superior com ícones de desfazer, refazer, salvar, PDF e menu de arquivos. Barra de edição com seleção, texto, chamada, tabela, duplicação, rotação e exclusão. Painéis recolhíveis no computador e painéis laterais no celular/tablet; no celular a barra inferior dá acesso à planta, móveis, folhas, propriedades e dados da prancha. Cartões de mobiliário permitem inserção rápida.
-
-Atalhos: `V` seleção, `T` texto, `A` chamada, `F` ajustar à tela, `Ctrl/⌘+S` salvar projeto. `Ctrl/⌘+Z`, `Ctrl/⌘+Shift+Z`, `Ctrl/⌘+D` e `Delete` continuam disponíveis. O menu Mais opções contém a lista de atalhos e as exportações.
-
-A prancha é ajustada à largura disponível na abertura e ao redimensionar a janela. O controle manual de zoom suspende o ajuste automático até acionar Ajustar à tela. A impressão mantém folhas A4 sem os painéis.
-
-Esta versão é uma cópia independente. O salvamento automático usa chave própria e não altera os projetos salvos na versão anterior. Para transferir edições, exporte o JSON na versão anterior e use Abrir projeto nesta versão. O layout da sala e seus quantitativos já acompanham a abertura inicial.
-
-## Revisão de 22/10/2026
-
-- Tabelas separadas para novos itens (aquisição) e itens existentes (sem compra), tanto no editor quanto nas pranchas. Use Tabela de destino nas propriedades do móvel ou no editor das tabelas. Móveis do mesmo tipo podem ser distribuídos entre as duas tabelas com quantidades independentes.
-- Cortina M12 incluída na janela P01, do forro ao piso. Referências de 1,90 m de largura e 2,85 m de altura; conferir instalação e folgas no local. Cor e tecido a definir.
-- P02: porta cinza, retoque da folha/painel e das vistas/guarnições nas duas faces e plaquinha Sala do Bem-Estar.
-- P03: vista da lateral da maca, porta fechada com indicação Não abrir e adesivo cinza na janela. Altura e peitoril da janela, bem como o material do fechamento, precisam de conferência local.
-- Projetos locais anteriores são migrados sem reposicionar objetos ou restaurar móveis excluídos. A cortina é inserida uma vez; exclusões posteriores são respeitadas. O aparador não foi excluído automaticamente.
+Sirva por HTTP para executar a versão modular. Dados salvos no navegador ficam separados desta revisão para iniciar com a entrega aprovada. JSON anteriores podem ser importados em Abrir projeto.

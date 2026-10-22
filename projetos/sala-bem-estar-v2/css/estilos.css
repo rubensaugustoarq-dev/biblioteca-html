@@ -10,3 +10,5 @@
 @media(max-width:380px){.brand h1 span{display:none}.brand .sub{max-width:96px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.brand{gap:7px}.appbar{gap:4px}.actions button{width:32px}.commandbar{gap:4px;padding:0 8px}.tools button{padding:7px 8px}.canvas-heading h2{font-size:20px}}
 
 .table-section{margin:0 0 28px}.table-section>h2{font-size:16px;margin:8px 0 14px;color:#355c43}.table-section th{top:0}.table-section select{min-width:170px;font-size:12px}
+
+.editable-fixed-text{cursor:text}.editable-fixed-text:hover{filter:drop-shadow(0 0 2px #b5c9a4)}#fixedTextDialog{max-width:650px}#fixedTextValue{font-size:16px;line-height:1.6;min-height:180px}@media print{.editable-fixed-text{filter:none!important}}
