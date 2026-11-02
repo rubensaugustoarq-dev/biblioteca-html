@@ -1,0 +1,9 @@
+export type AreaGeometry={type:'Polygon';coordinates:number[][][]};
+export type AreaDraft={id:string;sourceEntityId:string;name:string;mode:'wholeGleba'|'internalArea';geometry?:AreaGeometry};
+export type LandUse='green'|'institutional'|'other';
+export type Lot={id:string;name:string;number:number;geometry:AreaGeometry;locked:boolean;derived?:{areaM2:number;perimeterM:number;frontageM:number;perpendicularExtentM:number;roadContactM:number;accessReviewRequired:boolean}};
+export type Zone={id:string;name:string;use:LandUse;reference:string;automatic?:boolean;geometry:AreaGeometry;derived?:{areaM2:number}};
+export type LotParameters={patternName:string;frontage:number;depth:number;minArea:number;angle:number;frontEdge:number;minFrontage?:number;maxFrontage?:number;minDepth?:number;maxDepth?:number;maxArea?:number;optimization?:boolean;followFront?:boolean;adaptEdges?:boolean;greenRemainder?:boolean};
+export type LotAlternative={name:string;layout:Layout;summary:{lotCount:number;lotAreaM2:number;greenAreaM2:number;utilizationPercent:number;trialFrontageM:number;trialDepthM:number}};
+export type Layout={parameters:LotParameters;lots:Lot[];zones:Zone[];derived?:{glebaAreaM2:number;lotCount:number;conflictAreaM2:number;warnings:string[];categories:Record<string,{areaM2:number;percent:number;geometry:Record<string,unknown>}>;remainderGeometry:Record<string,unknown>}};
+export type SubdivisionArea=AreaDraft&{layout?:Layout;geometry:AreaGeometry;sourceName:string;sourceRevision:number;sourceBoundarySnapshot:AreaGeometry;derived:{areaM2:number;perimeterM:number;sourceAreaM2:number;percentOfSource:number;sourceMissing?:boolean;sourceChanged?:boolean;overlappingAreaIds?:string[]}};

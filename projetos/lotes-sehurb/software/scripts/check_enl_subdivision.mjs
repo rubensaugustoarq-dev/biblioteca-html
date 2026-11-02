@@ -1,0 +1,18 @@
+import {build} from '../apps/web/node_modules/esbuild/lib/main.js';
+import assert from 'node:assert/strict';
+await build({entryPoints:['apps/web/src/features/enl/subdivisionContext.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/enl-subdivision-check.mjs'});
+const {contextFeatures,SubdivisionContext}=await import('../.runtime/enl-subdivision-check.mjs');
+const polygon=(x,y,w,h)=>({type:'Polygon',coordinates:[[[x,y],[x+w,y],[x+w,y+h],[x,y+h],[x,y]]]});
+const active={id:'enl',sourceEntityId:'gleba',sourceSubdivisionAreaId:'area',sourceLotId:'lot1'};
+const doc={subdivisionAreas:[{id:'area',sourceEntityId:'gleba',name:'Origem',geometry:polygon(626000,8890000,30,30),layout:{lots:[{id:'lot1',name:'Lote 001',geometry:polygon(626000,8890000,10,25)},{id:'lot2',name:'Lote 002',geometry:polygon(626010,8890000,10,25)}],zones:[{id:'green',name:'Área verde',use:'green',geometry:polygon(626000,8890025,30,5),derived:{areaM2:150}}]}}]};
+const snapshot=JSON.stringify(doc),options={areaId:'area',gleba:false,lots:true,green:true};
+let features=contextFeatures(doc,active,options);assert.equal(features.length,2);assert.deepEqual(features.map(f=>f.properties.kind),['lot','green']);assert.equal(features[0].properties.lotId,'lot2');
+assert.equal(contextFeatures(doc,active,{...options,lots:false}).length,1);
+assert.equal(contextFeatures(doc,active,{...options,lots:false,green:false}).length,0);
+assert.equal(contextFeatures(doc,active,{...options,gleba:true}).length,3);
+const layer=new SubdivisionContext();layer.update(doc,active,options,p=>[p[0]-626000,p[1]-8890000]);
+assert.deepEqual(layer.source.getFeatures()[0].getGeometry().getCoordinates()[0][0],[10,0]);
+assert.deepEqual(layer.source.getFeatures().map(f=>f.get('kind')),['lot','green']);
+layer.update(doc,active,{...options,lots:false,green:false},p=>p);assert.equal(layer.source.getFeatures().length,0);
+assert.equal(JSON.stringify(doc),snapshot);
+console.log('Passed: context toggles, selected lot excluded, green reference, rigid conversion and original coordinates preserved.');

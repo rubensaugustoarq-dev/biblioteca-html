@@ -1,0 +1,60 @@
+import {build} from '../apps/web/node_modules/esbuild/lib/main.js';
+import assert from 'node:assert/strict';
+await build({entryPoints:['apps/web/src/features/infra/roadDimensions.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/infra-dimensions-check.mjs'});
+const {RoadDimensions}=await import('../.runtime/infra-dimensions-check.mjs');
+const overlay=new RoadDimensions();
+assert.equal(overlay.layer.getVisible(),false);
+overlay.update({infra:[{kind:'road',width:7,sidewalkLeft:2,sidewalkRight:2,derived:{regions:[{role:'pavement',geometry:{type:'Polygon',coordinates:[[[0,-3.5],[40,-3.5],[40,3.5],[0,3.5],[0,-3.5]]]}}],dimensions:[{kind:'axis',lengthM:40,geometry:{type:'LineString',coordinates:[[0,0],[40,0]]}}]}}]});
+const feature=overlay.source.getFeatures()[0],style=overlay.layer.getStyleFunction()(feature,.2);
+assert.deepEqual(style.getGeometry().getCoordinates(),[20,-7.5]);
+assert.equal(style.getText().getText(),'40,00 m');
+assert.equal(style.getStroke(),null,'Cotas externas devem conter somente o texto');
+overlay.layer.setVisible(true);assert.equal(overlay.layer.getVisible(),true);
+overlay.layer.setVisible(false);assert.equal(overlay.layer.getVisible(),false);
+overlay.update({infra:[]});assert.equal(overlay.source.getFeatures().length,0);
+console.log('Infra: posição externa, metros, visibilidade e remoção das cotas passaram.');
+
+await build({entryPoints:['apps/web/src/features/infra/roadPoints.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/infra-points-check.mjs'});
+const {RoadPoints}=await import('../.runtime/infra-points-check.mjs');
+const points=new RoadPoints();
+assert.equal(points.layer.getVisible(),false);
+points.update({infra:[{id:'a',kind:'road',geometry:{type:'LineString',coordinates:[[0,0],[10,0],[10,10]]},derived:{axisGeometry:{type:'LineString',coordinates:[[0,0],[8,0],[9,1],[10,2],[10,10]]}}},{id:'b',kind:'road',geometry:{type:'LineString',coordinates:[[20,0],[30,0]]},derived:{}},{kind:'surface',geometry:{type:'Polygon',coordinates:[]},derived:{}}]});
+assert.equal(points.source.getFeatures().length,5,'Amostras de arco e áreas não devem gerar IDs extras');
+const ordered=points.source.getFeatures().sort((a,b)=>a.get('roadId').localeCompare(b.get('roadId'))||a.get('index')-b.get('index'));
+assert.deepEqual(ordered.map(f=>f.get('label')),['P1','P2','P3','P1','P2']);
+assert.deepEqual(ordered[1].getGeometry().getCoordinates(),[9,1],'Ponto da concordância deve aparecer sobre o eixo suavizado');
+points.layer.setVisible(true);assert.equal(points.layer.getVisible(),true);
+points.update({infra:[]});assert.equal(points.source.getFeatures().length,0);
+console.log('Infra: pontos por via, projeção na concordância, visibilidade e remoção passaram.');
+
+await build({entryPoints:['apps/web/src/features/infra/surfaceDimensions.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/infra-surface-dimensions-check.mjs'});
+const {SurfaceDimensions}=await import('../.runtime/infra-surface-dimensions-check.mjs');
+const surfaces=new SurfaceDimensions();assert.equal(surfaces.layer.getVisible(),false);
+const square={type:'Polygon',coordinates:[[[0,0],[10,0],[10,10],[0,10],[0,0]]]};
+const document={infra:[{kind:'surface',geometry:{type:'Polygon',coordinates:[]},derived:{surfaceGeometry:square}}]};
+const original=JSON.stringify(document);surfaces.update(document);
+assert.equal(surfaces.source.getFeatures().length,4);
+for(const feature of surfaces.source.getFeatures()){
+ const style=surfaces.layer.getStyleFunction()(feature,.1);
+ assert.equal(style.getText().getText(),'10,00 m');
+ assert.equal(feature.get('polygon').intersectsCoordinate(style.getGeometry().getCoordinates()),false,'label outside pavement');
+ assert.equal(style.getStroke(),null,'labels only, no dimension lines');
+}
+const withHole={type:'Polygon',coordinates:[square.coordinates[0],[[3,3],[7,3],[7,7],[3,7],[3,3]]]};
+surfaces.update({infra:[{kind:'surface',derived:{surfaceGeometry:withHole}}]});
+assert.equal(surfaces.source.getFeatures().length,8);
+for(const feature of surfaces.source.getFeatures())assert.equal(feature.get('polygon').intersectsCoordinate(surfaces.layer.getStyleFunction()(feature,.1).getGeometry().getCoordinates()),false,'hole labels stay in void');
+surfaces.update({infra:[{kind:'surface',derived:{surfaceGeometry:{type:'MultiPolygon',coordinates:[square.coordinates,[[[20,0],[30,0],[30,10],[20,10],[20,0]]]]}}}]});
+assert.equal(surfaces.source.getFeatures().length,8,'all confirmed multipart components');
+surfaces.update({infra:[...document.infra,{kind:'surface',derived:{surfaceGeometry:{type:'Polygon',coordinates:[[[10,0],[20,0],[20,10],[10,10],[10,0]]]}}}]});
+assert.equal(surfaces.source.getFeatures().length,7,'only truly shared sides deduplicated');
+assert.equal(JSON.stringify(document),original);surfaces.layer.setVisible(true);assert.equal(surfaces.layer.getVisible(),true);
+surfaces.update({infra:[]});assert.equal(surfaces.source.getFeatures().length,0);
+console.log('Infra: pavement dimensions in metres, outward labels/holes, multipart, deduplication, immutable confirmed geometry and visibility passed.');
+
+const pathAxis={type:'LineString',coordinates:[[0,0],[20,0]]};
+overlay.update({infra:[{kind:'road',usage:'walkway',width:2,sidewalkLeft:0,sidewalkRight:0,derived:{regions:[{role:'sidewalk',geometry:{type:'Polygon',coordinates:[[[0,-1],[20,-1],[20,1],[0,1],[0,-1]]]}}],dimensions:[{kind:'axis',lengthM:20,geometry:pathAxis}]}}]});
+assert.equal(overlay.source.getFeatures().length,1);
+assert.equal(overlay.source.getFeatures()[0].get('label'),'20,00 m');
+assert.ok(overlay.layer.getStyleFunction()(overlay.source.getFeatures()[0],.1).getGeometry().getCoordinates()[1]<-1);
+console.log('Calçada independente: cota do eixo fora da faixa, em metros.');

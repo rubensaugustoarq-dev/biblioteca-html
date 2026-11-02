@@ -1,0 +1,17 @@
+import {build} from '../apps/web/node_modules/esbuild/lib/main.js';
+import assert from 'node:assert/strict';
+await build({stdin:{contents:`export {InfraScene} from './apps/web/src/features/infra/scene';export {BridgeOverlay} from './apps/web/src/features/infra/bridgeOverlay';export {LandscapeOverlay} from './apps/web/src/features/landscape/overlay';export {RoadDimensions} from './apps/web/src/features/infra/roadDimensions';export {default as Feature} from './apps/web/node_modules/ol/Feature.js';export {default as LineString} from './apps/web/node_modules/ol/geom/LineString.js';`,resolveDir:process.cwd(),loader:'ts'},bundle:true,platform:'node',format:'esm',outfile:'.runtime/bridges-check.mjs'});
+const {InfraScene,BridgeOverlay,LandscapeOverlay,RoadDimensions,Feature,LineString}=await import('../.runtime/bridges-check.mjs');
+let draw;const scene={cancel:()=>{},bridgeDrawing:true,bridgeLengthM:8,bridgeWidthM:2,callbacks:{geometry:()=>{}},options:()=>{},editor:{map:{addInteraction:i=>draw=i}}};
+InfraScene.prototype.tool.call(scene,'road',false,false);
+const axis=draw.geometryFunction_([[10,10],[11,10]]);assert.deepEqual(axis.getCoordinates(),[[10,10],[18,10]]);assert.equal(draw.maxPoints_,2);
+const diagonal=[];globalThis.document={createElement:()=>({width:0,height:0,getContext:()=>({fillRect:()=>{},beginPath:()=>{},moveTo:(x,y)=>diagonal.push(['M',x,y]),lineTo:(x,y)=>diagonal.push(['L',x,y]),stroke:()=>{},createPattern:()=> '#573a43'})})};
+const feature=new Feature(axis),style=draw.getOverlay().getStyleFunction()(feature,.1);assert.deepEqual(style.getGeometry().getExtent(),[10,9,18,11]);assert.equal(style.getFill().getColor(),'#573a43');assert.ok(diagonal.length>=10);
+const bridge=new BridgeOverlay();assert.ok(bridge.layer.getZIndex()>new LandscapeOverlay().layer.getZIndex(),'timber remains above water fill');
+const item={id:'bridge',name:'Ponte',kind:'road',usage:'bridge',width:2,sidewalkLeft:0,sidewalkRight:0,derived:{axisGeometry:{type:'LineString',coordinates:[[10,10],[18,10]]},regions:[{role:'bridge',material:'wood',geometry:{type:'Polygon',coordinates:[[[10,9],[18,9],[18,11],[10,11],[10,9]]]}}],dimensions:[{kind:'axis',lengthM:8,geometry:{type:'LineString',coordinates:[[10,10],[18,10]]}}]}};
+const doc={infra:[item]},before=JSON.stringify(doc);bridge.update(doc,p=>[p[1]-10,10-p[0]]);assert.deepEqual(bridge.source.getFeatures()[0].getGeometry().getExtent(),[-1,-8,1,0]);assert.equal(JSON.stringify(doc),before);
+const dimensions=new RoadDimensions();dimensions.update(doc);assert.equal(dimensions.source.getFeatures()[0].get('label'),'8,00 m');
+const path=new Feature(new LineString([[0,0],[10,0]]));path.setId('walk');path.setProperties({kind:'road',usage:'walkway',name:'Calçada'});
+const candidate={branchUsage:'bridge',objects:{getFeatures:()=>[path]},editor:{map:{getCoordinateFromPixel:p=>p,getPixelFromCoordinate:p=>p}}};
+assert.deepEqual(InfraScene.prototype.branchCandidate.call(candidate,[5,1],[0,0]).point,[5,0]);
+console.log('Ponte: comprimento exato, prévia com largura e hachura diagonal, conexão projetada, cotas, rotação ENL e desenho acima da água aprovados.');

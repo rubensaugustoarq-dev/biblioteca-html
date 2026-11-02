@@ -1,0 +1,13 @@
+import {build} from '../apps/web/node_modules/esbuild/lib/main.js';
+import assert from 'node:assert/strict';
+await build({entryPoints:['apps/web/src/FreeDimensions.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/free-dimensions-check.mjs'});
+const {FreeDimensions}=await import('../.runtime/free-dimensions-check.mjs');
+const layer=new FreeDimensions(),value={id:'d',name:'Cota',start:[626000,8890000],end:[626003,8890004],offset:2,color:'#ffe0a0'};
+layer.update([value]);const feature=layer.source.getFeatureById('d'),styles=layer.layer.getStyleFunction()(feature,.1);
+assert.equal(styles[1].getText().getText(),'5,00 m');
+const lines=styles[0].getGeometry().getCoordinates();assert.equal(lines.length,5);
+assert.ok(Math.abs(Math.hypot(lines[0][0][0]-value.start[0],lines[0][0][1]-value.start[1])-2)<1e-6);
+feature.getGeometry().setCoordinates([[626000,8890000],[626006,8890008]]);assert.equal(layer.layer.getStyleFunction()(feature,.1)[1].getText().getText(),'10,00 m');
+assert.deepEqual(value.end,[626003,8890004]);layer.layer.setVisible(false);assert.equal(layer.layer.getVisible(),false);
+layer.update([]);assert.equal(layer.source.getFeatures().length,0);layer.dispose();
+console.log('Cotas independentes: medidas UTM, afastamento, prévia de edição, visibilidade e descarte passaram.');

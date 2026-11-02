@@ -1,0 +1,23 @@
+import {build} from '../apps/web/node_modules/esbuild/lib/main.js';
+import assert from 'node:assert/strict';
+await build({entryPoints:['apps/web/src/pdfPreviewView.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/pdf-preview-check.mjs'});
+const {fitPreview,boundPreview,zoomPreview,movePrintCenter}=await import('../.runtime/pdf-preview-check.mjs');
+const viewport={width:1000,height:600},sheet=fitPreview(1000,600,420/297);
+assert.ok(sheet.width<=976&&sheet.height<=576);assert.ok(Math.abs(sheet.width/sheet.height-420/297)<1e-10);
+const initial={zoom:2,x:20,y:-15},anchor={x:100,y:50};
+const magnified=zoomPreview(initial,3,anchor);
+assert.ok(Math.abs((anchor.x-initial.x)/initial.zoom-(anchor.x-magnified.x)/magnified.zoom)<1e-10,'Cursor stays on the same sheet point');
+assert.ok(Math.abs((anchor.y-initial.y)/initial.zoom-(anchor.y-magnified.y)/magnified.zoom)<1e-10);
+assert.deepEqual(zoomPreview(magnified,2,anchor),initial);
+assert.equal(zoomPreview(initial,20).zoom,6);assert.equal(zoomPreview(initial,.01).zoom,.5);
+const bounded=boundPreview({zoom:3,x:1e6,y:-1e6},viewport,sheet);
+assert.ok(bounded.x>0&&bounded.x<1e6);assert.ok(bounded.y<0&&bounded.y>-1e6);
+assert.deepEqual(boundPreview({zoom:.5,x:100,y:100},viewport,sheet),{zoom:.5,x:0,y:0});
+console.log('Prévia PDF: proporção A3, zoom no cursor, limites, movimento e redução passaram.');
+
+const center=[626000,8890000],scale=1000;
+assert.deepEqual(movePrintCenter(center,10,5,scale,0),[625990,8890005]);
+const rotated=movePrintCenter(center,10,0,scale,Math.PI/2);assert.ok(Math.abs(rotated[0]-center[0])<1e-8);assert.ok(Math.abs(rotated[1]-(center[1]-10))<1e-8);
+assert.deepEqual(movePrintCenter(movePrintCenter(center,10,5,scale,.73),-10,-5,scale,.73),center);
+assert.equal(scale,1000);assert.deepEqual(center,[626000,8890000]);
+console.log('Enquadramento: deslocamento em mm, escala fixa, mapa girado, reversão e coordenadas originais preservadas passaram.');

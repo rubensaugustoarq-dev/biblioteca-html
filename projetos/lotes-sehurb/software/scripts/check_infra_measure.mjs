@@ -1,0 +1,17 @@
+import {build} from '../apps/web/node_modules/esbuild/lib/main.js';
+import assert from 'node:assert/strict';
+await build({entryPoints:['apps/web/src/features/infra/scene.ts'],bundle:true,platform:'node',format:'esm',outfile:'.runtime/infra-trena-check.mjs'});
+const {InfraScene}=await import('../.runtime/infra-trena-check.mjs');
+const calls=[];
+const scene={cancel:()=>{},editor:{tool:mode=>calls.push(['tool',mode]),drawingOptions:(snap,ortho)=>calls.push(['options',snap,ortho])},options:(snap,ortho)=>calls.push(['snap',snap,ortho])};
+InfraScene.prototype.tool.call(scene,'measure',true,true);
+assert.equal(scene.mode,'measure');
+assert.deepEqual(calls,[['tool','measure'],['options',true,true],['snap',true,true]]);
+scene.snap=null;scene.editor.map={};
+InfraScene.prototype.options.call(scene,false,false);
+assert.deepEqual(calls.at(-1),['options',false,false]);
+assert.equal(scene.mode,'measure','Alternar F8 não deve cancelar a trena');
+let selected=false;
+const exiting={editor:{mode:'measure',tool:mode=>selected=mode==='select'},branchPreview:{clear:()=>{}},handles:{clear:()=>{}},handleModify:null,draw:null,modify:null,snap:null};
+InfraScene.prototype.cancel.call(exiting);assert.equal(selected,true);
+console.log('Infra: trena usa o mapa local, alterna F8 sem reiniciar e cancela corretamente.');

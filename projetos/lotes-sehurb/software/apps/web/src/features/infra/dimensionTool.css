@@ -1,0 +1,3 @@
+.infra-dimension-tool .text-tool-popover{width:230px}.infra-dimension-options{display:grid;gap:9px}.infra-dimension-options button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:9px 10px;text-align:left}.infra-dimension-options button.active{border-color:#69deb0;color:#9bf0c8;background:#234c40;box-shadow:inset 0 0 0 1px #4fba91}
+
+.infra-dimension-tool .infra-dimension-options + .text-tool-add{margin-top:10px}

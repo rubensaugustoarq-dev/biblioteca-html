@@ -1,0 +1,10 @@
+import type {Annotation} from '../../api';
+export type EnlGeometry={type:'Polygon';coordinates:number[][][]};
+export type EnlKind='building'|'permeable'|'impermeable';
+export type EnlObject={id:string;kind:EnlKind;name:string;geometry:EnlGeometry;floors:number;computableArea:number|null;areaM2?:number};
+export type EnlRules={maxCa:number|null;maxTo:number|null;minTp:number|null;front:number|null;side:number|null;back:number|null};
+export type EnlStatus='notConfigured'|'ok'|'fail';
+export type EnlLot={id:string;sourceEntityId:string;sourceSubdivisionAreaId?:string;sourceLotId?:string;sourceRevision?:number;name:string;geometry:EnlGeometry;frontEdge:number;backEdge:number;rules:EnlRules;ruleSource:string;objects:EnlObject[];texts?:Annotation[];
+  derived?:{lotAreaM2:number;footprintM2:number;builtAreaM2:number;permeableAreaM2:number|null;impermeableAreaM2?:number;pavementAreaM2?:number;ca:number;to:number;tp:number|null;
+    checks:{name:string;value:number|null;limit:number|null;status:EnlStatus}[];
+    setbacks:{edge:number;role:'front'|'side'|'back';distanceM:number|null;line:number[][]|null;limit:number|null;status:EnlStatus}[]}};
