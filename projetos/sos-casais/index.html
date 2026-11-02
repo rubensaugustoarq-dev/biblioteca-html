@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#18382d">
+  <meta name="description" content="Estudo arquitetônico preliminar para o S.O.S. Casais. Apresentação conceitual de implantação, edificações, áreas de convivência e futuras unidades de hospedagem.">
+  <title>S.O.S. Casais | Estudo Arquitetônico Preliminar</title>
+  <style>
+    :root{--green:#18382d;--green2:#244c3d;--green3:#4e6d59;--cream:#f4eee3;--paper:#f9f6ef;--gold:#c6a46a;--text:#1b3028;--muted:#7d8a80;--line:rgba(199,167,113,.35);--shadow:0 22px 80px rgba(0,0,0,.19);color-scheme:light;}
+    *{box-sizing:border-box}html{height:100%;-webkit-text-size-adjust:100%}body{margin:0;background:var(--green);font-family:"Aptos","Segoe UI",Arial,sans-serif;color:var(--cream);overflow:hidden}
+    button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+    .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .grain{position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E")}
+    #deck{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden}
+    .slide{position:absolute;inset:0;display:none;overflow:auto;background:var(--cream);color:var(--text)}
+    .slide.is-active{display:block;animation:show .42s ease both}@keyframes show{from{opacity:.3;transform:translateY(9px)}to{opacity:1;transform:none}}
+    .slide.dark{background:var(--green);color:var(--cream)}
+    .slide-inner{min-height:100%;padding:clamp(86px,11vh,116px) clamp(28px,7vw,122px) 96px;display:flex;flex-direction:column}
+    .topbar{position:fixed;z-index:22;left:0;right:0;top:0;height:73px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5vw,76px);color:var(--cream);background:linear-gradient(180deg,rgba(20,49,38,.92),rgba(20,49,38,.85));border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px)}
+    .brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}.brand-mark{width:25px;height:27px;border:1px solid var(--gold);border-radius:50% 50% 48% 48%;display:grid;place-items:center;color:var(--gold);font:italic bold 19px Georgia,serif}.brand b{font:500 20px Georgia,serif;letter-spacing:.06em}.brand .sep{width:1px;height:21px;background:rgba(255,255,255,.28);margin-inline:5px}.brand small{font-size:10px;letter-spacing:.17em;color:#d6cbad;text-transform:uppercase}
+    .bar-right{display:flex;align-items:center;gap:10px}.bar-counter{font-size:11px;letter-spacing:.17em;color:#e5dac6;margin-right:14px}.bar-btn{border:1px solid rgba(255,255,255,.22);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:transparent;color:inherit;font-size:17px;transition:.2s}.bar-btn:hover{background:rgba(255,255,255,.15)}
+    .bottom{position:fixed;z-index:22;bottom:0;left:0;right:0;height:65px;padding:0 clamp(24px,5vw,76px);background:rgba(21,50,39,.94);color:var(--cream);display:flex;align-items:center;gap:20px;border-top:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px)}
+    .bottom-meta{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#e0d6bf;min-width:200px}.progress{flex:1;height:2px;background:rgba(255,255,255,.18);overflow:hidden}.progress i{display:block;height:100%;width:7%;background:var(--gold);transition:width .3s}
+    .nav-controls{display:flex;gap:8px}.nav-controls button{border:1px solid rgba(255,255,255,.28);border-radius:50%;background:transparent;color:var(--cream);width:39px;height:39px;font-size:21px;display:grid;place-items:center}.nav-controls button:hover{background:rgba(255,255,255,.15)}.nav-controls button:disabled{opacity:.3;cursor:not-allowed}
+    .eyebrow{display:flex;align-items:center;gap:13px;font-size:11px;text-transform:uppercase;letter-spacing:.23em;font-weight:700;color:#ad8852}.eyebrow:before{content:"";width:28px;height:1px;background:currentColor;flex:none}
+    h1,h2,h3,p{margin-top:0}h1,h2,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}h1{font-size:clamp(49px,7.6vw,122px);line-height:.96;letter-spacing:-.043em}h2{font-size:clamp(39px,4.8vw,76px);line-height:1.04;letter-spacing:-.035em;margin-bottom:24px}h3{font-size:21px;font-weight:500;margin-bottom:9px}
+    .intro{font-size:clamp(16px,1.45vw,20px);line-height:1.65;max-width:660px;color:#4e5e54}.slide.dark .intro{color:#d9dfd7}.muted{color:#65776e}.slide.dark .muted{color:#b6c3ba}.gold{color:var(--gold)}
+    .image{display:block;width:100%;height:100%;object-fit:cover}.image-box{position:relative;overflow:hidden;background:#c7c8bd}.image-box:after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.14);pointer-events:none}.image-box button.zoom{position:absolute;right:16px;bottom:16px;z-index:2;background:rgba(23,48,37,.86);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:100px;padding:10px 16px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(8px)}
+    .split{display:grid;grid-template-columns:42% 58%;min-height:100%;}.split .copy{padding:clamp(110px,12vh,145px) clamp(34px,5.4vw,92px) 100px;display:flex;flex-direction:column;justify-content:center;min-width:0}.split .visual{min-width:0;position:relative;overflow:hidden}.split .visual img{position:absolute;inset:0}.visual:after{content:"";pointer-events:none;position:absolute;inset:0;border-left:1px solid rgba(255,255,255,.15)}
+    .split.reverse{grid-template-columns:58% 42%}.split.reverse .copy{grid-column:2;grid-row:1}.split.reverse .visual{grid-column:1;grid-row:1}
+    .split-60{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,1fr);gap:clamp(22px,3.4vw,52px);flex:1;min-height:0}.split-60 .image-box{height:min(59vh,620px)}
+    .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#6f8b77;font-weight:700}.metric{font-family:Georgia,serif;font-size:clamp(33px,3.4vw,58px);color:var(--green);line-height:1.06}.metric small{font:500 12px Arial;letter-spacing:.06em}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.stat-card{background:#fff;border:1px solid #dfe5da;padding:17px 19px;border-radius:3px}.stat-card span{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:#778778;display:block;margin-bottom:9px}.stat-card strong{font:400 27px Georgia,serif;color:#203e30}.stat-card p{font-size:12px;color:#6e7971;margin:7px 0 0;line-height:1.5}
+    .pill{display:inline-block;border:1px solid rgba(197,164,106,.55);border-radius:100px;color:#ddc79d;font-size:10px;letter-spacing:.16em;padding:9px 12px;text-transform:uppercase}.dark .pill{background:rgba(201,164,98,.09)}
+    .note{border-left:2px solid var(--gold);padding:4px 0 4px 16px;font-size:13px;line-height:1.6;color:#69766e;margin-top:15px}.dark .note{color:#c5cfc7}
+    .list-clear{margin:26px 0 0;padding:0;list-style:none}.list-clear li{padding:13px 0;border-bottom:1px solid rgba(73,88,78,.17);font-size:15px;line-height:1.5}.dark .list-clear li{border-color:rgba(255,255,255,.13)}.num{display:inline-block;font:italic 18px Georgia,serif;color:#bd9a5f;margin-right:14px}
+    .caption{font-size:11px;letter-spacing:.07em;line-height:1.45;color:#778479;margin-top:12px}.dark .caption{color:#d3d1c3}.caption--overlay{position:absolute;bottom:18px;left:20px;right:20px;color:white;background:rgba(15,38,28,.72);padding:10px 14px;max-width:75%;font-size:11px;line-height:1.5;backdrop-filter:blur(5px)}
+    .cover{background:#122a21}.cover-img{height:100%;width:100%;object-fit:contain;object-position:center;display:block;background:#122a21}.cover-overlay{position:absolute;left:clamp(24px,6vw,90px);bottom:90px;background:rgba(9,26,19,.45);padding:10px 15px;color:#f0e9db;font-size:10px;letter-spacing:.17em;text-transform:uppercase}
+    .concept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ccd4c9;margin-top:auto;border:1px solid #ccd4c9}.concept-grid>div{background:#f7f5ef;padding:23px 19px;min-height:140px}.concept-grid b{font:400 21px Georgia,serif;display:block;margin:12px 0 7px}.concept-grid p{font-size:13px;line-height:1.5;color:#647267;margin:0}.concept-grid em{font:italic 18px Georgia,serif;color:#bd9a5f}
+    .hero-photo{position:absolute;inset:0;background:#173d2c}.hero-photo img{width:100%;height:100%;object-fit:cover}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,29,20,.87),rgba(15,44,29,.43) 50%,rgba(0,0,0,.03))}.hero-text{position:relative;z-index:1;max-width:690px;padding:clamp(150px,21vh,235px) clamp(28px,7vw,122px) 110px}.hero-text h2{font-size:clamp(46px,6.6vw,99px)}.hero-text p{max-width:550px;color:#e0e6dd;line-height:1.7;font-size:17px}
+    .hero-small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#dcc699}
+    .two-up{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;min-height:0}.two-up .image-box{height:min(51vh,570px)}.subhead{margin:12px 0 0;font-size:13px;color:#617468;line-height:1.5}
+    .spec{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}.spec div{padding:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16)}.spec b{display:block;font:400 clamp(27px,3vw,44px) Georgia,serif;color:#f4e2c0}.spec span{display:block;font-size:12px;line-height:1.55;color:#b4c1b9;margin-top:10px}
+    .next-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:34px}.next-card{background:#fdfbf7;border:1px solid #e3e3d8;padding:27px;min-height:230px;display:flex;flex-direction:column;gap:16px}.next-card .index{color:#b58b4e;font:italic 25px Georgia,serif}.next-card h3{font:400 25px Georgia,serif}.next-card p{font-size:13px;line-height:1.6;color:#68766d;flex:1}.next-card small{font-size:11px;color:#778b7c;text-transform:uppercase;letter-spacing:.12em}
+    .timeline{position:relative;display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.timeline span{background:#e6eadf;padding:11px 15px;border-radius:40px;font-size:12px;color:#315744}.timeline .future{border:1px dashed #ae9363;background:transparent;color:#95713d}
+    .outline-action{color:#325642;background:transparent;border:1px solid #9baa9a;border-radius:2px;padding:12px 19px;text-decoration:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase;display:inline-block}.dark .outline-action{color:#e8dfcc;border-color:#958c72}.outline-action:hover{background:#dfe8da}.dark .outline-action:hover{background:#274c3e}
+    .panel{position:fixed;z-index:32;inset:0;background:#193b2ecf;backdrop-filter:blur(15px);padding:95px min(6vw,80px) 80px;display:none;overflow:auto;color:var(--cream)}.panel.open{display:block}.panel h2{font-size:46px}.panel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.panel-tile{background:#244435;border:1px solid rgba(255,255,255,.13);padding:0;color:inherit;text-align:left;overflow:hidden}.panel-tile img{width:100%;height:135px;object-fit:cover;display:block;filter:saturate(.8)}.panel-tile b{display:block;padding:13px 16px 15px;font-size:13px;font-weight:500}.panel-tile span{color:#e0bd7f;margin-right:8px}
+    .lightbox{position:fixed;z-index:40;inset:0;background:rgba(4,15,10,.97);display:none;flex-direction:column;align-items:center;justify-content:center;padding:68px 22px 32px}.lightbox.open{display:flex}.lightbox img{object-fit:contain;max-width:100%;max-height:calc(100dvh - 140px);border:1px solid rgba(255,255,255,.1)}.lightbox .close,.panel .close{position:absolute;top:24px;right:30px;width:42px;height:42px;border-radius:50%;border:1px solid #d3d6ca80;background:transparent;color:white;font-size:23px;cursor:pointer}.lightbox p{color:#cbd7cd;font-size:12px;margin-top:15px;letter-spacing:.05em;text-align:center}
+    @media (max-width:1150px){.split{grid-template-columns:46% 54%}.split.reverse{grid-template-columns:54% 46%}.split .copy{padding-left:5vw;padding-right:4vw}.panel-grid{grid-template-columns:repeat(3,1fr)}.slide-inner{padding-left:5vw;padding-right:5vw}}
+    @media (max-width:780px){body{overflow:hidden}.topbar{height:64px;padding-inline:18px}.brand b{font-size:16px}.brand small,.brand .sep{display:none}.bar-counter{margin-right:3px}.bottom{height:63px;padding:0 18px;gap:12px}.bottom-meta{min-width:0;max-width:48%;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.progress{display:none}.slide-inner{padding:85px 22px 88px;min-height:100%;}.split,.split.reverse{display:flex;flex-direction:column;min-height:100%;}.split .copy,.split.reverse .copy{padding:88px 22px 20px;display:block;order:1;flex:none}.split .visual,.split.reverse .visual{order:2;flex:none;height:42vh;min-height:250px;margin:8px 22px 88px}.split .visual img{position:static}.split-60{display:block}.split-60 .image-box{height:39vh;margin-bottom:20px}.cards{grid-template-columns:1fr 1fr}.stat-card{padding:12px}.stat-card strong{font-size:22px}.concept-grid{grid-template-columns:1fr 1fr}.concept-grid>div{padding:12px;min-height:120px}.concept-grid b{font-size:18px}.hero-text{padding:125px 25px 115px}.two-up{display:block}.two-up .image-box{height:26vh;margin-bottom:12px}.spec{grid-template-columns:1fr;margin-top:20px}.next-grid{grid-template-columns:1fr}.next-card{min-height:180px}.panel{padding:85px 20px}.panel-grid{grid-template-columns:repeat(2,1fr)}.panel-tile img{height:95px}.slide.dark .intro{font-size:15px}.caption--overlay{left:5px;right:5px;bottom:5px;max-width:90%}.cover-img{object-fit:cover;object-position:67% center}.cover-overlay{display:none}}
+    @media(max-height:670px) and (min-width:781px){.slide-inner{padding-top:85px;padding-bottom:75px}.split .copy{padding-top:95px;padding-bottom:78px}h2{font-size:50px}.split-60 .image-box{height:50vh}}
+    @page{size:A4 landscape;margin:0}
+    @media print{html,body{height:auto!important;overflow:visible!important;background:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}#deck{height:auto!important;overflow:visible!important}.topbar,.bottom,.grain,.lightbox,.panel,.zoom{display:none!important}.slide{display:block!important;position:relative!important;overflow:hidden!important;height:210mm!important;width:297mm!important;page-break-after:always;break-after:page;animation:none!important}.slide-inner{padding:17mm 18mm 15mm!important}.split .copy{padding:22mm 12mm 10mm!important}.split .visual{height:210mm}.image{page-break-inside:avoid}}
+  </style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="brand" href="#inicio" id="home-link" title="Voltar à capa"><span class="brand-mark">S</span><b>S.O.S. CASAIS</b><span class="sep"></span><small>Estudo preliminar · V2</small></a>
+  <div class="bar-right"><span class="bar-counter" id="barCounter">01 / 17</span><button class="bar-btn" id="openOverview" title="Ver capítulos" aria-label="Ver capítulos">☷</button><button class="bar-btn" id="toggleFullscreen" title="Tela cheia" aria-label="Tela cheia">⛶</button></div>
+</header>
+<main id="deck" aria-label="Apresentação arquitetônica S.O.S. Casais">
+  <section id="inicio" class="slide cover is-active" data-title="Abertura" data-img="capa.webp" aria-label="Capa">
+    <img class="cover-img" src="assets/capa.webp" alt="Capa aprovada do S.O.S. Casais com fotografia do levantamento, título institucional e assinaturas técnicas">
+  </section>
+  <section id="visao" class="slide" data-title="Conceito" data-img="vegetacao.webp">
+    <div class="slide-inner">
+      <div class="eyebrow">01 / Direção conceitual</div>
+      <h2 style="max-width:950px;margin-top:24px">Um lugar para <em class="gold">encontros,</em><br>contemplação e convivência.</h2>
+      <p class="intro">A proposta combina atividades institucionais, encontros para casais e pequenas experiências de permanência em meio à paisagem existente. A natureza é o elemento estruturador do estudo, não apenas o cenário.</p>
+      <div class="concept-grid">
+        <div><em>01</em><b>Acolher</b><p>Recepção, convivência e espaços de apoio.</p></div>
+        <div><em>02</em><b>Reunir</b><p>Salão para encontros, celebrações e atividades institucionais.</p></div>
+        <div><em>03</em><b>Contemplar</b><p>Caminhos, lâmina d’água, decks e áreas de descanso.</p></div>
+        <div><em>04</em><b>Permanecer</b><p>Chalés compactos e choupanas integrados à mata.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="localizacao" class="slide" data-title="Localização e glebas" data-img="mapa.webp">
+    <div class="slide-inner">
+      <div class="eyebrow">02 / Base cartográfica</div>
+      <h2 style="margin-top:16px;margin-bottom:23px">O território e seus acessos</h2>
+      <div class="split-60">
+        <figure class="image-box" style="margin:0"><img class="image" src="assets/mapa.webp" alt="Mapa A3 elaborado em QGIS com dois polígonos delimitados em vermelho e amarelo, ponto da edificação principal e entorno urbano, no sistema SIRGAS 2000 UTM 19S"><button class="zoom" data-zoom="assets/mapa.webp" data-caption="Mapa de localização — base QGIS / estudo preliminar">Ampliar mapa ↗</button></figure>
+        <div><span class="kicker">Rio Branco · Acre</span><h3 style="font:400 33px Georgia,serif;margin:13px 0 17px">Duas áreas em articulação</h3><p class="intro" style="font-size:16px">O conjunto parte de uma edificação existente com dois pavimentos em desnível e considera o terreno complementar adquirido pelo cliente, com possibilidade de ligação viária e novo acesso.</p>
+          <ul class="list-clear"><li><span class="num" style="color:#d54c44">A</span> Poligonal vermelha: área da edificação principal e implantação de convivência.</li><li><span class="num" style="color:#b38c19">B</span> Poligonal amarela: terreno complementar e estudo de acesso.</li><li><span class="num" style="color:#a17b2f">C</span> Linha ocre: limite cadastral de referência; poligonais e limites sujeitos à conferência documental e topográfica.</li></ul>
+          <div class="note">Os contornos e o ponto são referências de estudo. Não substituem levantamento planialtimétrico, matrícula ou demarcação legal.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="implantacao" class="slide" data-title="Estudo do terreno" data-img="infra1.webp">
+    <div class="slide-inner">
+      <div class="eyebrow">03 / Estudo de implantação</div>
+      <h2 style="margin-top:16px;margin-bottom:19px">Organização preliminar do terreno</h2>
+      <div class="split-60"><div><div class="image-box"><img class="image" style="object-fit:contain;background:#e8ede8" src="assets/infra1.webp" alt="Estudo sobre ortofoto com traçado preliminar de vias, reservatórios paisagísticos, chalés e choupanas"><button class="zoom" data-zoom="assets/infra1.webp" data-caption="Quadro Infra 1/4 — implantação preliminar do terreno">Ampliar estudo ↗</button></div><p class="caption">Documento de implantação utilizado como base de apresentação, ainda sujeito a revisão de geometria, quantitativos e viabilidade técnica.</p></div>
+        <div><p class="kicker">Números do estudo base</p><div class="cards">
+          <div class="stat-card"><span>Gleba 1</span><strong>11.938,77 <small>m²</small></strong><p>Área identificada na prancha de estudo.</p></div>
+          <div class="stat-card"><span>Estacionamento</span><strong>12 <small>vagas</small></strong><p>Quantitativo desenhado, a revisar.</p></div>
+          <div class="stat-card"><span>Chalés</span><strong>21 <small>un.</small></strong><p>Distribuição preliminar da implantação.</p></div>
+          <div class="stat-card"><span>Choupanas</span><strong>16 <small>un.</small></strong><p>Quantidade do documento atual, não definitiva.</p></div>
+        </div><div class="note">As quantidades representam a versão do estudo em PDF. A definição das unidades, circulação e ocupação ocorrerá nas próximas etapas.</div></div>
+      </div>
+    </div>
+  </section>
+  <section id="paisagismo" class="slide" data-title="Água e circulação" data-img="infra4.webp">
+    <div class="slide-inner">
+      <div class="eyebrow">04 / Infraestrutura e paisagem</div>
+      <h2 style="margin-top:16px">Mobilidade suave e água como eixo de contemplação.</h2>
+      <div class="two-up">
+        <div><div class="image-box"><img class="image" style="object-fit:contain;background:#e6e9e4" src="assets/infra3.webp" alt="Quadro do estudo de infraestrutura com quantidade de vagas e unidades"><button class="zoom" data-zoom="assets/infra3.webp" data-caption="Estudo de vagas, vegetação e coberturas — Quadro 3/4">Ampliar quadro ↗</button></div><p class="subhead">A implantação prevê acessos, caminhamentos, áreas de apoio e relação com a topografia existente.</p></div>
+        <div><div class="image-box"><img class="image" style="object-fit:contain;background:#e6e9e4" src="assets/infra4.webp" alt="Quadro de estudo com duas lâminas d’água, áreas e legenda geral da implantação"><button class="zoom" data-zoom="assets/infra4.webp" data-caption="Áreas de lâminas d’água e legenda geral — Quadro 4/4">Ampliar quadro ↗</button></div><p class="subhead">Duas lâminas d’água somam <b>1.408,34 m²</b> no estudo base; extensão e cotas dependem de validação posterior.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="experiencia" class="slide dark" data-title="Visão paisagística" data-img="externo.webp">
+    <div class="hero-photo"><img src="assets/externo.webp" alt="Visualização conceitual do paisagismo com chalés, estacionamento, lago, ilha, piscina e deck"></div>
+    <div class="hero-text"><span class="hero-small">05 / Atmosfera e implantação</span><h2 style="color:#fff;margin-top:25px">Paisagem que<br><em style="color:#e8c78c">convida a ficar.</em></h2><p>Proposta visual de integração entre chalés, cabanas abertas, estacionamento, piscina em cota inferior, deck com cobertura em bambu e policarbonato, e lâmina d'água prolongada pelo terreno.</p><span class="pill">Imagem conceitual · proporções ilustrativas</span></div>
+  </section>
+  <section id="fachada" class="slide reverse" data-title="Fachada principal" data-img="fachada.webp">
+    <div class="split reverse" style="height:100%"><div class="copy"><div class="eyebrow">06 / Edificação existente</div><h2 style="margin-top:22px">Uma chegada<br>mais <em>acolhedora.</em></h2><p class="intro">A fachada recebe vegetação vertical, iluminação de arandelas, porta em madeira e sinalização institucional discreta, preservando a linguagem natural do conjunto.</p><ul class="list-clear"><li><span class="num">01</span> Muro vivo e valorização paisagística.</li><li><span class="num">02</span> Estacionamento em tijolinho maciço, acessos e sinalização.</li><li><span class="num">03</span> Identificação S.O.S. Casais junto à entrada.</li></ul><div class="note">Visualização preliminar sujeita à conferência de geometria, acessibilidade e intervenções executáveis.</div></div><div class="visual"><img class="image" src="assets/fachada.webp" alt="Estudo de fachada com jardim vertical, arandelas, porta em madeira e estacionamento"></div></div>
+  </section>
+  <section id="recepcao" class="slide" data-title="Recepção" data-img="recepcao.webp">
+    <div class="split" style="height:100%"><div class="copy"><div class="eyebrow">07 / Interior · pavimento da rua</div><h2 style="margin-top:22px">Receber com<br><em>leveza.</em></h2><p class="intro">Balcão lateral de atendimento sem obstruir a entrada, espaço de espera compacto, integração com plantas em verde-oliva e separação envidraçada para o salão.</p><ul class="list-clear"><li>Porta principal em madeira moderna.</li><li>Forro de gesso com sanca e luz quente.</li><li>Circulação de entrada preservada.</li></ul></div><div class="visual"><img class="image" src="assets/recepcao.webp" alt="Render da recepção com balcão lateral, porta de madeira, cadeiras de espera e forro de gesso"></div></div>
+  </section>
+  <section id="salao" class="slide" data-title="Salão institucional" data-img="salao.webp">
+    <div class="split reverse" style="height:100%"><div class="copy"><div class="eyebrow">08 / Encontros e eventos</div><h2 style="margin-top:22px">Um salão para<br><em>compartilhar.</em></h2><p class="intro">Dois blocos de cadeiras plásticas brancas, corredor central, palco elevado de ponta a ponta e uma composição de bambu iluminado.</p><ul class="list-clear"><li>Porta discreta à direita do palco, para área de serviço e camarim.</li><li>Janelas de quatro folhas, conforme vãos existentes.</li><li>Forro de gesso, sanca lateral e iluminação embutida.</li></ul></div><div class="visual"><img class="image" src="assets/salao.webp" alt="Salão com corredor central verde, cadeiras brancas, palco elevado e parede de bambu iluminada"></div></div>
+  </section>
+  <section id="cafe" class="slide" data-title="Cafeteria" data-img="cafeteria.webp">
+    <div class="split" style="height:100%"><div class="copy"><div class="eyebrow">09 / Apoio institucional</div><h2 style="margin-top:22px">Café e<br><em>convivência.</em></h2><p class="intro">Cafeteria compacta e simples, instalada no box existente à esquerda. Mesas leves, portas dos sanitários em verde-escuro, forro de gesso liso e revestimento de piso amadeirado.</p><ul class="list-clear"><li>Balção recuado, rente ao fechamento existente.</li><li>Divisória móvel com estrutura metálica, bambu e vegetação.</li><li>Sanitários feminino e masculino com acessos preservados.</li></ul></div><div class="visual"><img class="image" src="assets/cafeteria.webp" alt="Cafeteria compacta com balcão recuado, divisória metálica e bambu, piso amadeirado e portas verdes dos banheiros"></div></div>
+  </section>
+  <section id="apoio" class="slide" data-title="Pavimento inferior" data-img="inferior.webp">
+    <div class="split reverse" style="height:100%"><div class="copy"><div class="eyebrow">10 / Apoio e alimentação</div><h2 style="margin-top:22px">O pavimento<br><em>do encontro.</em></h2><p class="intro">Espaço inferior vinculado ao talude, com apoio para café da manhã, serviço e mesas distribuídas. A parede contínua recebe proposta de acabamento pétreo delgado e peças decorativas em fibras naturais.</p><ul class="list-clear"><li>Forro de gesso e iluminação equilibrada à luz do dia.</li><li>Porta da cozinha mantida no lado direito.</li><li>Materiais sujeitos à avaliação da umidade e do desempenho técnico.</li></ul></div><div class="visual"><img class="image" src="assets/inferior.webp" alt="Proposta para área de apoio no pavimento inferior, com mesas, bancada de café, revestimento pétreo e porta da cozinha"></div></div>
+  </section>
+  <section id="chales" class="slide dark" data-title="Chalé compacto" data-img="chale-planta.svg"><div class="split"><div class="copy"><div class="eyebrow">V2 / Estudos dos módulos</div><h2>Chalé compacto</h2><p class="intro">Quarto de 2,60 × 2,60 m livres, cama de casal de 1,38 × 1,88 m e banheiro posterior proposto de 2,60 × 1,20 m. Varanda de 2,90 × 1,20 m, com rede. Acessos frontal e lateral direito. Paredes consideradas: 15 cm.</p><div class="note">Estudo conceitual proposto nesta V2. Dimensões, estrutura, acessibilidade e instalações dependem de compatibilização técnica.</div></div><div class="visual" style="background:white"><img class="image" style="object-fit:contain;padding:65px 12px" src="assets/chale-planta.svg" alt="Chalé compacto"><button class="outline-action" style="position:absolute;bottom:80px;right:24px;background:white;z-index:3" data-zoom="assets/chale-planta.svg" data-caption="Chalé compacto — V2 conceitual">Ampliar desenho ↗</button></div></div></section><section id="chale-perspectiva" class="slide dark" data-title="Abrigo e acolhimento" data-img="chale-perspectiva.svg"><div class="split"><div class="copy"><div class="eyebrow">V2 / Estudos dos módulos</div><h2>Abrigo e acolhimento</h2><p class="intro">Cobertura em duas águas, varanda protegida e acabamento amadeirado. O volume preserva a escala compacta do quarto e reúne o banheiro nos fundos. Pé-direito ilustrativo de 2,50 m.</p><div class="note">Estudo conceitual proposto nesta V2. Dimensões, estrutura, acessibilidade e instalações dependem de compatibilização técnica.</div></div><div class="visual" style="background:white"><img class="image" style="object-fit:contain;padding:65px 12px" src="assets/chale-perspectiva.svg" alt="Abrigo e acolhimento"><button class="outline-action" style="position:absolute;bottom:80px;right:24px;background:white;z-index:3" data-zoom="assets/chale-perspectiva.svg" data-caption="Abrigo e acolhimento — V2 conceitual">Ampliar desenho ↗</button></div></div></section><section id="choupanas" class="slide dark" data-title="Choupana elevada" data-img="choupana-planta.svg"><div class="split"><div class="copy"><div class="eyebrow">V2 / Estudos dos módulos</div><h2>Choupana elevada</h2><p class="intro">Plataforma octogonal proposta com 3,20 m entre faces paralelas e área aproximada de 8,48 m². Namoradeira para duas pessoas e piso elevado 0,50 m. Degraus ilustram o acesso; a rota acessível deve ser integrada ao terreno na próxima etapa.</p><div class="note">Estudo conceitual proposto nesta V2. Dimensões, estrutura, acessibilidade e instalações dependem de compatibilização técnica.</div></div><div class="visual" style="background:white"><img class="image" style="object-fit:contain;padding:65px 12px" src="assets/choupana-planta.svg" alt="Choupana elevada"><button class="outline-action" style="position:absolute;bottom:80px;right:24px;background:white;z-index:3" data-zoom="assets/choupana-planta.svg" data-caption="Choupana elevada — V2 conceitual">Ampliar desenho ↗</button></div></div></section><section id="choupana-perspectiva" class="slide dark" data-title="Pausa na paisagem" data-img="choupana-perspectiva.svg"><div class="split"><div class="copy"><div class="eyebrow">V2 / Estudos dos módulos</div><h2>Pausa na paisagem</h2><p class="intro">Estrutura aberta em madeira, oito apoios e cobertura de oito águas com acabamento natural. A elevação destaca a plataforma e permite implantação sensível à topografia. Guarda-corpos, fundações e acesso serão definidos no projeto técnico.</p><div class="note">Estudo conceitual proposto nesta V2. Dimensões, estrutura, acessibilidade e instalações dependem de compatibilização técnica.</div></div><div class="visual" style="background:white"><img class="image" style="object-fit:contain;padding:65px 12px" src="assets/choupana-perspectiva.svg" alt="Pausa na paisagem"><button class="outline-action" style="position:absolute;bottom:80px;right:24px;background:white;z-index:3" data-zoom="assets/choupana-perspectiva.svg" data-caption="Pausa na paisagem — V2 conceitual">Ampliar desenho ↗</button></div></div></section><section id="etapas" class="slide" data-title="Próximas etapas" data-img="mapa.webp">
+    <div class="slide-inner"><div class="eyebrow">13 / Desenvolvimento</div><h2 style="margin-top:17px">Do conceito ao projeto.</h2><p class="intro">Esta apresentação consolida referências para alinhamento com o cliente. A próxima etapa é compatibilizar o programa com a topografia, a vegetação, os acessos e as dimensões executáveis.</p>
+      <div class="next-grid">
+        <div class="next-card"><span class="index">01</span><h3>Conferência do terreno</h3><p>Validar limites, cotas, faixa de preservação, drenagem, área de intervenção e viabilidade das lâminas d’água.</p><small>Base técnica</small></div>
+        <div class="next-card"><span class="index">02</span><h3>Planta do chalé</h3><p>Compatibilizar as dimensões propostas do chalé com ventilação, instalações, circulação e implantação.</p><small>Compatibilização técnica</small></div>
+        <div class="next-card"><span class="index">03</span><h3>Planta da choupana</h3><p>Validar o módulo octogonal proposto, os apoios, a proteção perimetral, a rota acessível e os detalhes construtivos.</p><small>Compatibilização técnica</small></div>
+      </div><div class="timeline"><span>Levantamento visual ✓</span><span>Estudo preliminar do terreno ✓</span><span>Imagens conceituais ✓</span><span class="future">Plantas e perspectivas conceituais — V2</span><span class="future">Compatibilização e orçamento — próxima fase</span></div>
+    </div>
+  </section>
+  <section id="encerramento" class="slide dark" data-title="Encerramento" data-img="capa.webp">
+    <div class="hero-photo"><img src="assets/area_livre.webp" alt="Área natural existente do empreendimento S.O.S. Casais"><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,37,25,.92),rgba(9,37,25,.53))"></div></div>
+    <div class="hero-text" style="max-width:900px"><span class="hero-small">Estudo arquitetônico preliminar · Rio Branco — AC</span><h2 style="margin:26px 0 28px">S.O.S. Casais</h2><p style="font:italic clamp(23px,2.7vw,40px) Georgia,serif;line-height:1.4;color:#f0e5cb">“Uma proposta para acolher histórias, fortalecer vínculos e vivenciar a natureza.”</p><div style="display:flex;gap:40px;flex-wrap:wrap;margin:55px 0 22px;color:#efe8d9"><span><b style="font:400 23px Georgia,serif;display:block">Wemelli Araújo</b><small style="font-size:11px;letter-spacing:.12em;color:#cbbf9e">ARQUITETA E URBANISTA</small></span><span><b style="font:400 23px Georgia,serif;display:block">Rubens Augusto</b><small style="font-size:11px;letter-spacing:.12em;color:#cbbf9e">ARQUITETO E URBANISTA</small></span></div><span class="pill">Concepção preliminar · não executivo</span></div>
+  </section>
+</main>
+<footer class="bottom"><span class="bottom-meta" id="bottomTitle">Abertura</span><div class="progress" aria-hidden="true"><i id="progress"></i></div><div class="nav-controls"><button id="prev" aria-label="Slide anterior" title="Anterior (←)">‹</button><button id="next" aria-label="Próximo slide" title="Próximo (→)">›</button></div></footer>
+<aside class="panel" id="overview" aria-label="Índice da apresentação"><button class="close" id="closeOverview" aria-label="Fechar índice">×</button><div class="eyebrow">Navegação</div><h2 style="margin-top:15px">Capítulos da apresentação</h2><div class="panel-grid" id="panelGrid"></div><p style="color:#b8c9bf;font-size:12px;margin-top:22px">Use as setas do teclado para navegar. Clique nas imagens cartográficas para ampliá-las.</p></aside>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada"><button class="close" id="closeLightbox" aria-label="Fechar imagem ampliada">×</button><img id="lightboxImg" alt="Imagem ampliada"><p id="lightboxCaption"></p></div>
+<script>
+(() => {
+  const slides=[...document.querySelectorAll('.slide')], total=slides.length;
+  const counter=document.getElementById('barCounter'), title=document.getElementById('bottomTitle');
+  const progress=document.getElementById('progress'), prev=document.getElementById('prev'), next=document.getElementById('next');
+  const overview=document.getElementById('overview'), grid=document.getElementById('panelGrid');
+  const lightbox=document.getElementById('lightbox'), lightImg=document.getElementById('lightboxImg');
+  let index=0;
+  const thumb=(s)=>'assets/'+s.dataset.img;
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');b.className='panel-tile';b.innerHTML=`<img src="${thumb(s)}" loading="lazy" alt=""><b><span>${String(i+1).padStart(2,'0')}</span>${s.dataset.title}</b>`;
+    b.addEventListener('click',()=>{overview.classList.remove('open');go(i);});grid.appendChild(b);
+  });
+  function go(i){
+    index=Math.max(0,Math.min(total-1,i));
+    slides.forEach((s,j)=>{s.classList.toggle('is-active',j===index);s.setAttribute('aria-hidden',j!==index?'true':'false');if(j===index)s.scrollTop=0;});
+    counter.textContent=`${String(index+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}`;
+    title.textContent=slides[index].dataset.title;progress.style.width=`${(index+1)*100/total}%`;
+    prev.disabled=index===0;next.disabled=index===total-1;
+    history.replaceState(null,'','#'+slides[index].id);
+  }
+  prev.addEventListener('click',()=>go(index-1));next.addEventListener('click',()=>go(index+1));
+  document.getElementById('home-link').addEventListener('click',e=>{e.preventDefault();go(0)});
+  document.getElementById('openOverview').addEventListener('click',()=>overview.classList.add('open'));
+  document.getElementById('closeOverview').addEventListener('click',()=>overview.classList.remove('open'));
+  document.getElementById('toggleFullscreen').addEventListener('click',()=>{
+    if(document.fullscreenElement){document.exitFullscreen?.()}else{document.documentElement.requestFullscreen?.().catch(()=>{})}
+  });
+  document.querySelectorAll('[data-zoom]').forEach(btn=>btn.addEventListener('click',()=>{
+    lightImg.src=btn.dataset.zoom; lightImg.alt=btn.dataset.caption||'Imagem ampliada';
+    document.getElementById('lightboxCaption').textContent=btn.dataset.caption||'';lightbox.classList.add('open');
+  }));
+  document.getElementById('closeLightbox').addEventListener('click',()=>lightbox.classList.remove('open'));
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.classList.remove('open')});
+  document.addEventListener('keydown',e=>{
+    if(lightbox.classList.contains('open')){if(e.key==='Escape')lightbox.classList.remove('open');return;}
+    if(overview.classList.contains('open')){if(e.key==='Escape')overview.classList.remove('open');return;}
+    if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();go(index+1)}
+    if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(index-1)}
+    if(e.key==='Home'){go(0)} if(e.key==='End'){go(total-1)};
+  });
+  let touchX=null;
+  const deck=document.getElementById('deck');deck.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX;touchX=null;if(Math.abs(dx)>90){if(dx<0)go(index+1);else go(index-1)}},{passive:true});
+  const hash=decodeURIComponent(location.hash.slice(1));const at=slides.findIndex(s=>s.id===hash);go(at<0?0:at);
+})();
+</script>
+</body>
+</html>
