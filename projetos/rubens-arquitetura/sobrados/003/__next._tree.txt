@@ -3,8 +3,8 @@
 :HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/media/8888a3826f4a3af4-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/media/b957ea75a84b6ea7-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/media/eafabf029ad39a43-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/css/c2cc5e569fdd0416.css","style"]
+:HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/css/48116f60dfcab4b1.css","style"]
 :HL["/biblioteca-html/projetos/rubens-arquitetura/hero-rubens.webp","image",{"type":"image/webp"}]
 :HL["/biblioteca-html/projetos/rubens-arquitetura/sobrados/sobrado-003-fachada.webp","image"]
 :HL["/biblioteca-html/projetos/rubens-arquitetura/brand/logo-rubens-white.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"sobrados","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"003","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"Pb24AXCFx1Pf9cfHAZRHB"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"sobrados","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"003","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"P59HicbbHJYr3BQPkDO88"}

@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[4740,[],""]
-3:I[5426,[],""]
-:HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/css/c2cc5e569fdd0416.css","style"]
+2:I[2039,[],""]
+3:I[3291,[],""]
+:HL["/biblioteca-html/projetos/rubens-arquitetura/_next/static/css/48116f60dfcab4b1.css","style"]
 :HL["/biblioteca-html/projetos/rubens-arquitetura/hero-rubens.webp","image",{"type":"image/webp"}]
-0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/biblioteca-html/projetos/rubens-arquitetura/_next/static/css/c2cc5e569fdd0416.css","precedence":"next"}]],["$","html",null,{"lang":"pt-BR","children":[["$","head",null,{"children":["$","link",null,{"rel":"preload","href":"/biblioteca-html/projetos/rubens-arquitetura/hero-rubens.webp","as":"image","type":"image/webp"}]}],["$","body",null,{"className":"__variable_0e967c","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Pb24AXCFx1Pf9cfHAZRHB"}
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/biblioteca-html/projetos/rubens-arquitetura/_next/static/css/48116f60dfcab4b1.css","precedence":"next"}]],["$","html",null,{"lang":"pt-BR","children":[["$","head",null,{"children":["$","link",null,{"rel":"preload","href":"/biblioteca-html/projetos/rubens-arquitetura/hero-rubens.webp","as":"image","type":"image/webp"}]}],["$","body",null,{"className":"__variable_82b8b8","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"P59HicbbHJYr3BQPkDO88"}

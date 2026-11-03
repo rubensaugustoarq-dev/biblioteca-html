@@ -15,3 +15,7 @@ Copie o conteúdo de out/ para ../../projetos/rubens-arquitetura/ e publique na 
 
 O basePath em next.config.ts e os caminhos em app/ correspondem a /biblioteca-html/projetos/rubens-arquitetura.
 O site é público, sem login e sem banco de dados. O formulário monta a mensagem e abre o WhatsApp para revisão e envio pelo visitante.
+
+
+## Home final — novembro de 2026
+Retrato do casal em preto e branco integrado ao fundo claro, texto responsivo e botão ligado ao diagnóstico. Fontes locais em public/fonts. A maquete interativa está em public/casa-interativa.html, com imagem alternativa para navegadores sem WebGL.

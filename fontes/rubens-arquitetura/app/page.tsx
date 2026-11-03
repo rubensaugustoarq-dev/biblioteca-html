@@ -216,6 +216,9 @@ export default function Home() {
           <a onClick={() => setMenuOpen(false)} href="/biblioteca-html/projetos/rubens-arquitetura/sobrados">
             Sobrados
           </a>
+          <a onClick={() => setMenuOpen(false)} href="#equipe">
+            Nós
+          </a>
           <a onClick={() => setMenuOpen(false)} href="#bim">
             BIM
           </a>
@@ -325,6 +328,21 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="studio-team studio-portrait" id="equipe">
+        <img className="studio-portrait-image" src="/biblioteca-html/projetos/rubens-arquitetura/rubens-wemelli.webp" alt="Rubens Augusto e Wemelli Araújo, juntos em retrato preto e branco" loading="lazy" />
+        <div className="studio-portrait-shade" aria-hidden="true" />
+        <div className="studio-portrait-copy">
+          <p className="section-tag">Rubens Augusto & Wemelli Araújo</p>
+          <h2>Dois olhares.<br />Um projeto para você.</h2>
+          <p className="studio-lead">Arquitetura e interiores pensados juntos, da primeira ideia aos detalhes que fazem parte da sua rotina.</p>
+          <div className="studio-bios">
+            <div><h3>Rubens Augusto</h3><p>Arquiteto e urbanista. Projetos residenciais e comerciais, modelagem BIM e documentação técnica.</p></div>
+            <div><h3>Wemelli Araújo</h3><p>Arquiteta com foco em interiores residenciais e prediais. Conforto, funcionalidade e identidade para cada ambiente.</p></div>
+          </div>
+          <button className="button" onClick={openQuiz}>Vamos planejar seu espaço <span>↗</span></button>
+        </div>
+      </section>
+
       <section className="services" id="servicos">
         <div className="section-heading">
           <p className="section-tag">01 — Serviços</p>
@@ -346,9 +364,78 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="projects technical-projects" id="projetos">
+        <div className="section-heading">
+          <p className="section-tag">02 — Projetos técnicos</p>
+          <h2>
+            Espaços pensados
+            <br />
+            para a vida real.
+          </h2>
+        </div>
+        <p className="projects-intro">
+          Plantas humanizadas e modelos 3D ortogonais transformam informações
+          técnicas em imagens fáceis de entender. Você visualiza o espaço,
+          confere escolhas e toma decisões com mais segurança.
+        </p>
+        <div className="technical-list">
+          {projects.map((project, index) => (
+            <article key={project.title} className="project-preview-card">
+              <div className="technical-copy">
+                <p>0{index + 1} · {index === 1 ? "Maquete arquitetônica interativa" : project.type}</p>
+                <h3>{index === 1 ? "Uma casa para explorar em 3D" : project.title}</h3>
+                <p>{index === 1 ? "Uma maquete com profundidade, texturas e luz natural. Toque para abrir a cobertura e conhecer os ambientes; arraste para girar a casa, mantendo a vista aérea." : project.text}</p>
+              </div>
+              <div className={index === 1 ? "technical-image villa-frame" : "technical-image"}>
+                {index === 1 ? (
+                  <iframe src="/biblioteca-html/projetos/rubens-arquitetura/casa-interativa.html" title="Casa com pátio — maquete 3D interativa" loading="lazy" />
+                ) : (
+                  <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                )}
+              </div>
+              <button className="project-budget-link" onClick={openQuiz}>Quero um projeto assim →</button>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="featured-houses"
+        aria-labelledby="featured-houses-title"
+      >
+        <div className="section-heading">
+          <p className="section-tag">03 — Sobrados em destaque</p>
+          <h2 id="featured-houses-title">
+            Modelos para inspirar
+            <br />o seu próximo projeto.
+          </h2>
+        </div>
+        <div className="featured-houses-intro">
+          <p>
+            Conheça referências de sobrados e solicite uma análise para adaptar
+            o modelo escolhido ao seu terreno e às necessidades da sua família.
+          </p>
+          <a className="text-link dark-link" href="/biblioteca-html/projetos/rubens-arquitetura/sobrados">
+            Ver todos os sobrados <span>→</span>
+          </a>
+        </div>
+        <div className="sobrado-grid featured-sobrado-grid">
+          {featuredSobrados.map((sobrado, index) => (
+            <SobradoCard
+              key={sobrado.id}
+              sobrado={sobrado}
+              priority={index === 0}
+            />
+          ))}
+        </div>
+        <a className="button featured-all-button" href="/biblioteca-html/projetos/rubens-arquitetura/sobrados">
+          Ver todos os sobrados <span>→</span>
+        </a>
+      </section>
+
       <section className="process" id="processo">
         <div className="section-heading">
-          <p className="section-tag">02 — Como funciona</p>
+          <p className="section-tag">04 — Como funciona</p>
           <h2>
             Um processo simples
             <br />e transparente.
@@ -391,77 +478,6 @@ export default function Home() {
         <button className="button" onClick={openQuiz}>
           Começar diagnóstico <span>↗</span>
         </button>
-      </section>
-
-      <section className="projects technical-projects" id="projetos">
-        <div className="section-heading">
-          <p className="section-tag">03 — Projetos técnicos</p>
-          <h2>
-            Espaços pensados
-            <br />
-            para a vida real.
-          </h2>
-        </div>
-        <p className="projects-intro">
-          Plantas humanizadas e modelos 3D ortogonais transformam informações
-          técnicas em imagens fáceis de entender. Você visualiza o espaço,
-          confere escolhas e toma decisões com mais segurança.
-        </p>
-        <div className="technical-list">
-          {projects.map((project, index) => (
-            <article key={project.title} className={index % 2 ? "reverse" : ""}>
-              <div className="technical-image">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>0{index + 1}</span>
-              </div>
-              <div className="technical-copy">
-                <p>{project.type}</p>
-                <h3>{project.title}</h3>
-                <p>{project.text}</p>
-                <button onClick={openQuiz}>Quero um projeto assim →</button>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section
-        className="featured-houses"
-        aria-labelledby="featured-houses-title"
-      >
-        <div className="section-heading">
-          <p className="section-tag">04 — Sobrados em destaque</p>
-          <h2 id="featured-houses-title">
-            Modelos para inspirar
-            <br />o seu próximo projeto.
-          </h2>
-        </div>
-        <div className="featured-houses-intro">
-          <p>
-            Conheça referências de sobrados e solicite uma análise para adaptar
-            o modelo escolhido ao seu terreno e às necessidades da sua família.
-          </p>
-          <a className="text-link dark-link" href="/biblioteca-html/projetos/rubens-arquitetura/sobrados">
-            Ver todos os sobrados <span>→</span>
-          </a>
-        </div>
-        <div className="sobrado-grid featured-sobrado-grid">
-          {featuredSobrados.map((sobrado, index) => (
-            <SobradoCard
-              key={sobrado.id}
-              sobrado={sobrado}
-              priority={index === 0}
-            />
-          ))}
-        </div>
-        <a className="button featured-all-button" href="/biblioteca-html/projetos/rubens-arquitetura/sobrados">
-          Ver todos os sobrados <span>→</span>
-        </a>
       </section>
 
       <section className="bim" id="bim">
