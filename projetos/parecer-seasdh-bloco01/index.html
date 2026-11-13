@@ -59,6 +59,7 @@ dialog#lb::backdrop{background:rgba(20,26,22,.72)}
 .lbimg{overflow:auto;max-height:calc(94vh - 120px);background:#fff}.lbimg img{display:block;width:100%;height:auto}
 #lbnote{margin:0;padding:10px 14px 14px;font-size:14px;color:#36403a;border-top:1px solid var(--line)}
 .vr{font:inherit;font-size:14px;margin-top:10px;margin-right:6px;background:var(--card);border:1px solid var(--brand);color:var(--brand);border-radius:999px;padding:5px 12px;cursor:zoom-in}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:14px 0 26px}.tabs a{padding:9px 16px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--mut);font-size:15px;border:1px solid transparent;margin-bottom:-1px}.tabs a[aria-current="page"]{background:var(--card);border-color:var(--line);border-bottom-color:var(--card);color:var(--ink);font-weight:600}
 footer{margin-top:40px;font-size:13px;color:#707b72}
 a.back{color:var(--brand);text-decoration:none;font-size:14px}
 @media (max-width:600px){summary{grid-template-columns:auto 1fr}.tag{grid-column:2;justify-self:start}.body{padding-left:18px}}
@@ -67,7 +68,8 @@ a.back{color:var(--brand);text-decoration:none;font-size:14px}
 </head>
 <body>
 <main>
-<a class="back" href="../../">← Biblioteca HTML</a><br><br>
+<a class="back" href="../../">← Biblioteca HTML</a>
+<nav class="tabs" aria-label="Seções"><a href="./" aria-current="page">Roteiro do parecer</a><a href="./a08.html">Adequação A08 · Alarme</a></nav>
 <small class="k">SEHURB · Aprovação de projeto · SEINFRA Rio Branco</small>
 <h1>Parecer SEASDH Bloco 01: o que tratar</h1>
 <p class="lead">Itens do parecer na ordem original, com o que fazer em cada um e a posição sugerida para a reunião. Clique no item para abrir o resumo.</p>
@@ -215,7 +217,7 @@ const ITENS=[
 {g:"A",n:"A08",o:"Proj. 8",t:"Alarme de emergência nos sanitários PCD",p:"cum",
  ex:"Apresentar nos detalhes dos sanitários PCD o dispositivo de alarme de emergência (NBR 9050, 5.6.4.1).",
  fa:["Inserir o dispositivo no detalhe e nas elevações.","Compatibilizar com instalações elétricas."],ev:"Detalhes e elevações com posição e especificação.",
- ar:"Cumprir. Rápido e barato."},
+ ar:"Cumprir. Primeira adequação: passo a passo, especificação, trechos da norma e pedido pronto para a IA na aba Adequação A08 (a08.html). Resumo: botoeira junto à bacia (e no chuveiro) a 0,40 m do piso, cor contrastante, IP 66, sinalizador sonoro e luminoso do lado de fora, sistema monitorado e com tom diferente do alarme de incêndio (NBR 9050, 5.6)."},
 {g:"A",n:"A09",o:"Proj. 9",t:"Varredura das portas dos boxes (WC masc. e fem. 02)",p:"cum",
  ex:"Apresentar área de varredura das portas de todos os boxes dos sanitários comuns.",
  fa:["Desenhar os arcos e o sentido de abertura de todas as portas."],ev:"Plantas ampliadas com portas, louças e áreas livres.",
