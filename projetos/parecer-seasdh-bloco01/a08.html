@@ -10,8 +10,8 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:960px;margin:auto;padding:32px 20px 64px}
 a{color:var(--brand)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:0 0 28px}
-.tabs a{padding:9px 16px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--mut);font-size:15px;border:1px solid transparent;margin-bottom:-1px}
+.tabs{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin:0 0 28px}
+.tabs a{white-space:nowrap;padding:8px 13px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--mut);font-size:14px;border:1px solid transparent;margin-bottom:-1px}
 .tabs a[aria-current="page"]{background:var(--card);border-color:var(--line);border-bottom-color:var(--card);color:var(--ink);font-weight:600}
 small.k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#577260}
 h1{font-size:clamp(26px,5.5vw,40px);line-height:1.15;letter-spacing:-.02em;margin:10px 0 10px}
@@ -47,8 +47,9 @@ footer{margin-top:30px;font-size:13px;color:#707b72}
 <body>
 <main>
 <nav class="tabs" aria-label="Seções">
-  <a href="./">Roteiro do parecer</a>
-  <a href="./a08.html" aria-current="page">Adequação A08 · Alarme</a>
+  <a href="./">Roteiro</a>
+  <a href="./a08.html" aria-current="page">Alarme A08</a>
+  <a href="./palco.html">Rampa do palco</a>
 </nav>
 
 <small class="k">SEASDH Bloco 01 · Parecer SEINFRA 0116.007382/2026-75 · item Projeto 8</small>

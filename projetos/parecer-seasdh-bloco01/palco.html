@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rampa do palco · Aprovada · SEASDH Bloco 01</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f6f6f3;--ink:#202722;--mut:#606b63;--line:#d9ded8;--card:#fff;--brand:#2f563e;--acc:#c48e54}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:960px;margin:auto;padding:32px 20px 64px}
+a{color:var(--brand)}
+.tabs{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin:0 0 28px}
+.tabs a{white-space:nowrap;padding:8px 13px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--mut);font-size:14px;border:1px solid transparent;margin-bottom:-1px}
+.tabs a[aria-current="page"]{background:var(--card);border-color:var(--line);border-bottom-color:var(--card);color:var(--ink);font-weight:600}
+small.k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#577260}
+h1{font-size:clamp(26px,5.5vw,40px);line-height:1.15;letter-spacing:-.02em;margin:10px 0 10px}
+.lead{color:var(--mut);max-width:700px;margin:0}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:18px 0}
+section h2{font-size:19px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
+section h2 em{font-style:normal;font:600 12px ui-monospace,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+p,li{color:#36403a}ul,ol{padding-left:22px;margin:6px 0}li{margin:4px 0}
+.quote{background:var(--bg);border-left:3px solid var(--brand);border-radius:0 10px 10px 0;padding:10px 14px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#577260;font-weight:600}
+td:first-child{font-weight:600;white-space:nowrap}
+.warn{background:#f6ecdc;border:1px solid #e6cfa6;border-radius:12px;padding:10px 14px;font-size:15px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:8px}
+.gal button{font:inherit;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:0;cursor:zoom-in;overflow:hidden;color:var(--ink)}
+.gal button:focus-visible,.copy:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.gal img{display:block;width:100%;height:180px;object-fit:contain;background:#fff;border-bottom:1px solid var(--line)}
+.gal span{display:block;padding:9px 12px 11px;font-size:14px;line-height:1.35}
+pre{white-space:pre-wrap;background:#1f2a23;color:#e8efe9;border-radius:12px;padding:16px;font:13.5px/1.55 ui-monospace,Consolas,monospace;margin:8px 0 0;max-height:520px;overflow:auto}
+.copy{font:inherit;font-size:14px;background:var(--brand);color:#fff;border:0;border-radius:999px;padding:7px 16px;cursor:pointer}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+dialog{width:min(1200px,96vw);max-height:94vh;border:0;border-radius:16px;padding:0}
+dialog::backdrop{background:rgba(20,26,22,.72)}
+.lbbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;flex-wrap:wrap}
+.lbbar a{font-size:13px;font-weight:500;margin-right:8px}
+.lbbar button{font:inherit;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--bg);cursor:pointer}
+.lbimg{overflow:auto;max-height:calc(94vh - 70px)}.lbimg img{display:block;width:100%;height:auto}
+footer{margin-top:30px;font-size:13px;color:#707b72}
+@media print{.tabs,.copy,dialog{display:none}section{break-inside:avoid}}
+.ok{display:inline-block;background:#e6efe8;color:#2f563e;font-weight:700;font-size:13px;letter-spacing:.06em;border-radius:999px;padding:5px 12px}
+a.dl{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;border-radius:999px;padding:11px 20px;font-weight:600;font-size:15px;margin:4px 0}
+a.dl:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:6px}
+.big div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.big b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#577260;font-weight:600}
+.big span{font-size:20px;font-weight:700}
+.chk li{list-style:none;margin-left:-22px}.chk input{width:18px;height:18px;accent-color:var(--brand);vertical-align:-3px;margin-right:8px}
+</style>
+</head>
+<body>
+<main>
+<nav class="tabs" aria-label="Seções">
+  <a href="./">Roteiro</a>
+  <a href="./a08.html">Alarme A08</a>
+  <a href="./palco.html" aria-current="page">Rampa do palco</a>
+</nav>
+
+<small class="k">SEASDH Bloco 01 · Parecer SEINFRA 0116.007382/2026-75 · item Projeto 7</small>
+<h1>Rampa do palco do auditório</h1>
+<p><span class="ok">APROVADA PELA SEINFRA · A EXECUTAR</span></p>
+<p class="lead">Solução aprovada pela analista da SEINFRA na folha A103. É esta que será executada em obra e que deve ser copiada nas pranchas do projeto legal.</p>
+
+<section>
+  <h2>Arquivo aprovado</h2>
+  <a class="dl" href="arquivos/SEASDH-Auditorio-Rampa-do-Palco-aprovado-SEINFRA.pdf" target="_blank" rel="noopener">⬇ Folha A103 – Rampa do palco (PDF)</a>
+  <div class="gal" id="g1"></div>
+</section>
+
+<section>
+  <h2>Medidas principais</h2>
+  <div class="big">
+    <div><b>Inclinação</b><span>16,66%</span><br><small>lance único, sobe</small></div>
+    <div><b>Largura</b><span>1,20 m</span></div>
+    <div><b>Projeção</b><span>2,41 m</span></div>
+    <div><b>Patamar</b><span>3,00 × 1,65 m</span><br><small>cota −0,20</small></div>
+    <div><b>Saída</b><span>−0,58 / −0,60</span></div>
+    <div><b>Shaft</b><span>0,45 × 0,41 m</span><br><small>no canto, fora da rampa</small></div>
+  </div>
+</section>
+
+<section>
+  <h2>Especificação (notas da A103)</h2>
+  <table>
+    <tbody>
+      <tr><td>Chegada</td><td>Nivelada com o palco, sem ressaltos.</td></tr>
+      <tr><td>Corrimão</td><td>Duplo, em madeira tratada, a 0,70 m e 0,92 m do piso acabado, afastado no mínimo 4 cm da parede, empunhadura contínua e sem arestas.</td></tr>
+      <tr><td>Piso</td><td>Vinílico comercial em manta, totalmente aderido à base de concreto regularizada, acabamento fosco, antiderrapante R11, uso comercial intenso, reação ao fogo compatível com a NT 10 do CBMAC.</td></tr>
+      <tr><td>Borda do palco</td><td>Iluminação linear indireta recuada da borda frontal, direcionada para o piso: fita LED COB 24 V, 12 W/m, 3.000 K, IRC ≥ 90, em perfil de alumínio preto.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Base na norma <em>NBR 9050:2020 · 10.4.3</em></h2>
+  <ul>
+    <li>Rampa de acesso ao palco: largura mínima de 0,90 m.</li>
+    <li>Inclinação máxima de 1:6 (16,66%) para vencer altura de até 0,60 m; acima disso, 1:10 (10%).</li>
+    <li>Exige guia de balizamento; corrimão e guarda-corpo não são obrigatórios (aqui foi previsto corrimão duplo).</li>
+    <li>O item 6.6.2.1 dispensa áreas de descanso nas rampas de plateia e palco (10.4).</li>
+  </ul>
+  <p>A solução aprovada usa o limite de 16,66%, dentro da regra.</p>
+</section>
+
+<section>
+  <h2>Conferência em campo</h2>
+  <ul class="chk" id="chk">
+    <li><label><input type="checkbox" data-k="c1">Inclinação de 16,66%: subir 0,40 m em 2,41 m de projeção</label></li>
+    <li><label><input type="checkbox" data-k="c2">Largura livre de 1,20 m (entre corrimão e borda)</label></li>
+    <li><label><input type="checkbox" data-k="c3">Patamar de 3,00 × 1,65 m na cota −0,20, livre de obstáculos</label></li>
+    <li><label><input type="checkbox" data-k="c4">Shaft 0,45 × 0,41 m no canto, sem invadir rampa nem patamar</label></li>
+    <li><label><input type="checkbox" data-k="c5">Chegada nivelada com o palco, sem degrau ou ressalto</label></li>
+    <li><label><input type="checkbox" data-k="c6">Corrimão duplo a 0,70 e 0,92 m, contínuo, afastado ≥ 4 cm da parede</label></li>
+    <li><label><input type="checkbox" data-k="c7">Guia de balizamento na borda livre da rampa</label></li>
+    <li><label><input type="checkbox" data-k="c8">Piso vinílico R11 fosco aplicado</label></li>
+  </ul>
+  <p style="font-size:13px;color:var(--mut)">As marcações ficam salvas só neste aparelho.</p>
+</section>
+
+<section>
+  <h2>O que atualizar no projeto legal</h2>
+  <ul>
+    <li>Copiar exatamente a solução da A103 nos detalhes das pranchas ARQ 07/07 e 08/08.</li>
+    <li>Apagar as notas antigas: "lance 2 com 7,51%", "dois lances de 15,38%", "largura 1,40 m" e a chegada na cota +0,34.</li>
+    <li>Registrar na tabela de revisões: "Atendimento ao parecer SEINFRA 0116.007382/2026-75, item Projeto 7 – solução aprovada (A103)".</li>
+  </ul>
+</section>
+
+<footer>Roteiro interno de trabalho, não é documento oficial. Executar conforme o PDF aprovado; em caso de divergência, vale a folha A103.</footer>
+</main>
+
+<dialog id="lb" aria-label="Imagem ampliada">
+  <div class="lbbar"><span id="lbcap"></span><span><a id="lbopen" target="_blank" rel="noopener">Abrir em tamanho real ↗</a><button type="button" id="lbclose" aria-label="Fechar">✕</button></span></div>
+  <div class="lbimg"><img id="lbimg" alt=""></div>
+</dialog>
+
+<script>
+const G1=[["recortes/a07-rampa-palco-aprovada-print.jpg","Planta da rampa aprovada (lance único 16,66%)"],["recortes/a07-rampa-palco-aprovada-A103.jpg","Folha A103 completa – 3D e planta do palco"]];
+const lb=document.getElementById("lb"),g=document.getElementById("g1");
+g.innerHTML=G1.map(([f,t])=>`<button type="button" data-f="${f}" data-t="${t}"><img src="${f}" alt="${t}" loading="lazy"><span>${t}</span></button>`).join("");
+g.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;lbimg.src=b.dataset.f;lbimg.alt=b.dataset.t;lbcap.textContent=b.dataset.t;lbopen.href=b.dataset.f;lb.showModal()});
+lbclose.onclick=()=>lb.close();lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+const K="palco-seasdh-b01-chk";let st={};try{st=JSON.parse(localStorage.getItem(K)||"{}")}catch(e){}
+document.querySelectorAll("#chk input").forEach(c=>{c.checked=!!st[c.dataset.k];c.addEventListener("change",()=>{st[c.dataset.k]=c.checked;try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}})});
+</script>
+</body>
+</html>
