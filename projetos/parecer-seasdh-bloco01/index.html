@@ -45,6 +45,7 @@ summary::-webkit-details-marker{display:none}
 .check input{width:18px;height:18px;accent-color:var(--brand)}
 .notes{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
 .notes h2{font-size:18px;margin:0 0 8px}.notes ul{margin:0;padding-left:20px;color:#36403a}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 14px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#577260;font-weight:600}tr.tot td{font-weight:600;background:var(--bg)}
 footer{margin-top:40px;font-size:13px;color:#707b72}
 a.back{color:var(--brand);text-decoration:none;font-size:14px}
 @media (max-width:600px){summary{grid-template-columns:auto 1fr}.tag{grid-column:2;justify-self:start}.body{padding-left:18px}}
@@ -81,10 +82,35 @@ a.back{color:var(--brand);text-decoration:none;font-size:14px}
 <div id="list"></div>
 
 <section class="notes">
+  <h2>Comparativo: projeto anterior × projeto novo</h2>
+  <p style="color:var(--mut);margin:0 0 10px;font-size:14px">Anterior: ARQ 01/06 a 06/06, 18/03/2025 (campo de aprovação em branco). Novo: folhas 01/07 a 07/07, Projeto Legal, 10/11/2026.</p>
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th>Bloco 01</th><th>Anterior</th><th>Novo</th><th>Diferença</th></tr></thead>
+    <tbody>
+      <tr><td>Existente</td><td>962,39 m²</td><td>954,57 m² (a conservar)</td><td>−7,82 m²</td></tr>
+      <tr><td>Ampliação</td><td>190,45 m²</td><td>246,27 m²</td><td><b>+55,82 m²</b></td></tr>
+      <tr><td>Demolição</td><td>0</td><td>5,70 m²</td><td>+5,70 m²</td></tr>
+      <tr class="tot"><td>Total</td><td>1.152,84 m²</td><td>1.200,84 m²</td><td>+48,00 m² (+4,2%)</td></tr>
+      <tr><td>Terreno</td><td>4.444,45 m² (Bloco 01, dentro de 11.325,48 m²)</td><td>13.754,07 m² (lote unificado)</td><td>outra base</td></tr>
+      <tr><td>T.O. / T.P.</td><td>30% / 40%</td><td>8,73% / 49,95%</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th>Vagas</th><th>Anterior</th><th>Novo</th></tr></thead>
+    <tbody>
+      <tr><td>Plateia do auditório (1 vaga / 8 m²)</td><td>137,40 m² → 18</td><td>185,39 m² → 24</td></tr>
+      <tr><td>Bloco 01 / ambientes institucionais (1 vaga / 40 m²)</td><td>310 m² → 8</td><td>556,76 m² → 14</td></tr>
+      <tr class="tot"><td>Total do Bloco 01</td><td>26 vagas</td><td>38 vagas (+12)</td></tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--mut);margin:10px 0 0;font-size:14px">No anterior, o Castelinho/FUMBESA somava mais 3 vagas (105,18 m²), total de 29. A redução de 7,82 m² no existente vem quase toda dos 5,70 m² demolidos para ampliar; o restante parece ajuste de medição.</p>
+</section>
+
+<section class="notes">
   <h2>Pontos gerais para levar</h2>
   <ul>
-    <li><b>Base de toda a defesa:</b> o Bloco 01 é reforma de edificação existente. Levar prova da idade do prédio e quadro de áreas antes/depois.</li>
-    <li><b>Campo 2.9</b> do parecer marca "construído até 31/12/2014: Não". Se o prédio existia antes, pedir correção: isso sustenta A03 e A10.</li>
+    <li><b>Base da defesa:</b> o Bloco 01 é reforma de edificação existente (vale para A10). Mas houve ampliação de 48 m² e aumento de 12 vagas: não usar o argumento de "sem acréscimo de área".</li>
+    <li><b>Campo 2.9</b> do parecer marca "construído até 31/12/2014: Não". Se o prédio existia antes, pedir correção: isso sustenta o A10.</li>
     <li><b>Campo 2.7</b> marca "imóvel tombado: Não", em contradição com a D06.</li>
     <li><b>D07</b> cita o Art. 33, §1º da LC 48/2018, mas o texto do artigo não aparece no parecer. Pedir a transcrição.</li>
     <li>Não contestar tudo: escolher os itens "Defender", levar prova de cada um e mostrar que o restante já está em correção.</li>
@@ -92,14 +118,14 @@ a.back{color:var(--brand);text-decoration:none;font-size:14px}
   </ul>
 </section>
 
-<footer>Fontes: parecer técnico 0116.007382/2026-75 (11/11/2026); ABNT NBR 9050:2020 (versão corrigida 2021); ABNT NBR 16537:2024. Roteiro interno de trabalho, não é documento oficial. As posições sugeridas são orientação para a reunião; a decisão é do responsável técnico.</footer>
+<footer>Fontes: parecer técnico 0116.007382/2026-75 (11/11/2026); pranchas ARQ 01/06–06/06 (18/03/2025) e 01/07–07/07 (10/11/2026); ABNT NBR 9050:2020 (versão corrigida 2021); ABNT NBR 16537:2024. Roteiro interno de trabalho, não é documento oficial. As posições sugeridas são orientação para a reunião; a decisão é do responsável técnico.</footer>
 </main>
 
 <script>
 const ITENS=[
 {g:"D",n:"D01",o:"Doc. 1",t:"Requerimento explicando a retificação",p:"cum",
  ex:"Explicar em requerimento qual a retificação necessária.",
- fa:["Comparar o projeto aprovado anteriormente com a revisão atual.","Listar as alterações e as pranchas substituídas (quadro antes/depois)."],
+ fa:["Comparar o projeto aprovado anteriormente com a revisão atual.","Listar as alterações e as pranchas substituídas (quadro antes/depois).","Explicar a diferença de área: total de 1.152,84 para 1.200,84 m² (+48,00 m²); ampliação de 190,45 para 246,27 m²; existente de 962,39 para 954,57 m², com 5,70 m² demolidos para ampliar.","Explicar a mudança de base do terreno: Bloco 01 (4.444,45 m²) para lote unificado (13.754,07 m²)."],
  ev:"Requerimento assinado, com referência à aprovação anterior.",
  ar:"Cumprir. Antes, confirmar se existe mesmo um projeto aprovado anterior: se não existir, o pedido não é retificação e muda a natureza do requerimento (ligado ao A01)."},
 {g:"D",n:"D02",o:"Doc. 2",t:"CNPJ",p:"cum",
@@ -107,7 +133,7 @@ const ITENS=[
  ar:"Cumprir. Documento simples."},
 {g:"D",n:"D03",o:"Doc. 3",t:"Matrícula do terreno",p:"cum",
  ex:"Anexar matrícula do terreno.",fa:["Localizar a matrícula do lote usado.","Conferir titularidade, área e limites."],ev:"Matrícula coerente com a implantação.",
- ar:"Cumprir. Se o imóvel do Estado não tiver matrícula individualizada, apresentar o documento de domínio/cessão equivalente e explicar."},
+ ar:"Cumprir. A prancha 01/07 do projeto novo cita a matrícula nº 23.847 do lote unificado (levantamento de 20/08/26): anexar essa matrícula."},
 {g:"D",n:"D04",o:"Doc. 4",t:"BCI do lote unificado",p:"cum",
  ex:"Anexar BCI do lote unificado.",fa:["Confirmar se a unificação foi concluída.","Conferir coerência com matrícula e poligonal."],ev:"BCI do lote unificado e identificação cadastral nas pranchas.",
  ar:"Cumprir. Se a unificação estiver em andamento, informar o número do processo."},
@@ -126,16 +152,17 @@ const ITENS=[
  ar:"Defender. O parecer cita o artigo, mas o texto não aparece. Pedir a transcrição. Uma reforma sem aumento de área nem mudança de acessos de veículos dificilmente gera novo projeto de trânsito. Se for exigido, propor um único projeto para o lote unificado."},
 {g:"A",n:"A01",o:"Proj. 1",t:"Cópia do projeto aprovado",p:"cum",
  ex:"Apresentar cópia do projeto arquitetônico aprovado.",fa:["Recuperar o caderno aprovado e o ato de aprovação."],ev:"Cópia com aprovação legível, data e escopo.",
- ar:"Cumprir. Se não houver aprovação anterior, esclarecer na reunião (ligado ao D01)."},
+ ar:"Cumprir, mas atenção: nas pranchas do projeto anterior (ARQ 01/06 a 06/06, 18/03/2025) o campo APROVAÇÕES está em branco. Localizar a versão carimbada ou a certidão de aprovação. Se não existir, o pedido não é retificação (ligado ao D01)."},
 {g:"A",n:"A02",o:"Proj. 2",t:"Piso tátil no passeio público",p:"cum",
  ex:"Apresentar sinalização tátil no passeio que margeia o lote (NBR 9050/2020 e NBR 16537/2024). Lote de esquina.",
  fa:["Desenhar alerta e direcional nas duas frentes, rebaixamentos e acessos."],ev:"Implantação/passeio com traçado, legenda, cotas e detalhes.",
  ar:"Cumprir. A NBR 16537:2024 existe e tornou o direcional obrigatório em calçadas com faixa livre a partir de 1,20 m. Não vale contestar."},
-{g:"A",n:"A03",o:"Proj. 3",t:"Vagas de estacionamento",p:"def",
+{g:"A",n:"A03",o:"Proj. 3",t:"Vagas de estacionamento",p:"cum",
  ex:"Apresentar estacionamento para o bloco conforme o uso (Art. 69 do Plano Diretor e Cap. III da LC 48/2018).",
- fa:["Montar quadro de áreas antes/depois (área útil).","Mostrar as vagas existentes do lote unificado."],ev:"Memória de cálculo, quadro de vagas e implantação.",
- ar:"Defender. O Art. 69, transcrito no próprio parecer, trata de \"empreendimentos a serem construídos\" e calcula pela área útil. Reforma sem acréscimo de área útil não muda a demanda. O estacionamento interno do lote unificado atende o conjunto."},
-{g:"A",n:"A04",o:"Proj. 4",t:"Piso tátil da testada aos pontos de atendimento",p:"neg",
+ fa:["Locar as 38 vagas do quadro novo no lote unificado (estacionamento do Bloco 02, acostamento etc.), com PCD e idosos.","Conferir se a área de cálculo dos ambientes institucionais (556,76 m²) é mesmo área útil, como pede o Art. 69."],
+ ev:"Quadro de cálculo de vagas (prancha 01/07) e implantação com as vagas cotadas.",
+ ar:"Cumprir. O projeto novo aumentou a área: a plateia passou de 137,40 para 185,39 m² e o quadro de vagas do Bloco 01 subiu de 26 para 38 vagas (+12). O argumento de reforma sem acréscimo de área não vale mais. Ver o comparativo de áreas no fim da página."},
+ {g:"A",n:"A04",o:"Proj. 4",t:"Piso tátil da testada aos pontos de atendimento",p:"neg",
  ex:"A sinalização tátil deve partir da testada/entrada principal até os principais pontos de interesse e atendimento.",
  fa:["Mapear os pontos de atendimento ao público.","Garantir continuidade desde o passeio (ligar com A02 e A06)."],ev:"Planta de acessibilidade integrada com legenda.",
  ar:"Negociar alcance. A NBR 16537 prevê o direcional na ausência ou interrupção da guia de balizamento. Onde paredes já orientam o percurso, limitar o direcional aos trechos sem referência e aos pontos de atendimento."},
@@ -149,7 +176,7 @@ const ITENS=[
  ar:"Negociar. Se a REV02 já tem a rampa, o argumento é \"resolvido na revisão de 10/11\". Levar as folhas da REV02. Atenção: não há comprovação de que a REV02 foi a versão analisada."},
 {g:"A",n:"A07",o:"Proj. 7",t:"Pilar no patamar da rampa do palco",p:"def",
  ex:"A rampa do palco do auditório não atende a NBR 9050: o pilar no patamar invade a área mínima de giro da cadeira de rodas.",
- fa:["Confirmar no corte a altura do palco.","Redesenhar a rampa pela regra própria do palco, com chegada direta ao piso do palco e o pilar fora da área de manobra.","Não propor remoção do pilar sem avaliação estrutural."],
+ fa:["Altura do palco: 40 cm no projeto anterior (prancha 04/06); no novo parece mantida em 0,40 m — confirmar no corte 05/07.","Redesenhar a rampa pela regra própria do palco, com chegada direta ao piso do palco e o pilar fora da área de manobra.","Não propor remoção do pilar sem avaliação estrutural."],
  ev:"Planta ampliada com pilar, rampa e área de manobra cotados; corte.",
  ar:"Defender com solução pronta. NBR 9050, 10.4.3 (p. 127): rampa de palco com largura mínima de 0,90 m, inclinação até 1:6 (16,66%) para altura até 0,60 m (1:10 acima disso), com guia de balizamento e sem exigir corrimão nem guarda-corpo. O 10.4.3 não fala em patamar, e o 6.6.2.1 trata essas rampas como caso à parte. Cuidado: a dispensa de patamar é interpretação; por isso levar junto o esboço da rampa a 1:6, mais curta, com o pilar fora da manobra."},
 {g:"A",n:"A08",o:"Proj. 8",t:"Alarme de emergência nos sanitários PCD",p:"cum",
