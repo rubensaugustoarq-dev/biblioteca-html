@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parecer SEINFRA · SEASDH Bloco 01 · Roteiro de atendimento</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f6f6f3;--ink:#202722;--mut:#606b63;--line:#d9ded8;--card:#fff;--brand:#2f563e;--brand2:#223f2d;--acc:#c48e54;
+--def:#2f563e;--defbg:#e6efe8;--neg:#9a6a1f;--negbg:#f6ecdc;--cum:#5b6470;--cumbg:#eceff2;--ext:#8a3b3b;--extbg:#f5e4e2}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:960px;margin:auto;padding:48px 20px 64px}
+small.k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#577260}
+h1{font-size:clamp(28px,6vw,46px);line-height:1.1;letter-spacing:-.03em;margin:14px 0 10px}
+.lead{color:var(--mut);max-width:680px;margin:0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:26px 0}
+.meta div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.meta b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#577260;font-weight:600}
+.meta span{font-size:15px}
+.legend,.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters{margin:8px 0 6px}
+.filters button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.filters button:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.progress{font-size:14px;color:var(--mut);margin:4px 0 0}
+h2.grp{font-size:20px;margin:40px 0 12px;display:flex;align-items:baseline;gap:10px}
+h2.grp em{font-style:normal;font-size:14px;color:var(--mut);font-weight:400}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden}
+details[open]{border-color:#b9c6bc;box-shadow:0 4px 18px rgba(32,39,34,.06)}
+summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+.num{font:600 14px/1 ui-monospace,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 9px;min-width:46px;text-align:center}
+.tt{font-weight:600;line-height:1.35}
+.tt small{display:block;font-weight:400;color:var(--mut);font-size:13px;margin-top:2px}
+.tag{font-size:12px;font-weight:600;letter-spacing:.04em;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.t-def{color:var(--def);background:var(--defbg)}.t-neg{color:var(--neg);background:var(--negbg)}.t-cum{color:var(--cum);background:var(--cumbg)}.t-ext{color:var(--ext);background:var(--extbg)}
+.done summary .tt{text-decoration:line-through;color:var(--mut)}
+.body{padding:0 18px 18px 78px;border-top:1px solid var(--line)}
+.body h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#577260;margin:16px 0 4px}
+.body p,.body ul{margin:0 0 4px;color:#36403a}
+.body ul{padding-left:20px}
+.arg{background:var(--bg);border-left:3px solid var(--brand);border-radius:0 10px 10px 0;padding:10px 14px;margin-top:6px}
+.arg.neg{border-color:var(--neg)}.arg.cum{border-color:var(--cum)}.arg.ext{border-color:var(--ext)}
+.check{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:14px;color:var(--mut)}
+.check input{width:18px;height:18px;accent-color:var(--brand)}
+.notes{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.notes h2{font-size:18px;margin:0 0 8px}.notes ul{margin:0;padding-left:20px;color:#36403a}
+footer{margin-top:40px;font-size:13px;color:#707b72}
+a.back{color:var(--brand);text-decoration:none;font-size:14px}
+@media (max-width:600px){summary{grid-template-columns:auto 1fr}.tag{grid-column:2;justify-self:start}.body{padding-left:18px}}
+@media print{.filters,.check,a.back{display:none}details{break-inside:avoid}details .body{display:block}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../../">← Biblioteca HTML</a><br><br>
+<small class="k">SEHURB · Aprovação de projeto · SEINFRA Rio Branco</small>
+<h1>Parecer SEASDH Bloco 01: o que tratar</h1>
+<p class="lead">Itens do parecer na ordem original, com o que fazer em cada um e a posição sugerida para a reunião. Clique no item para abrir o resumo.</p>
+
+<div class="meta">
+  <div><b>Processo / parecer</b><span>0116.007382/2026-75 · 1ª análise</span></div>
+  <div><b>Data do parecer</b><span>11/11/2026</span></div>
+  <div><b>Resultado</b><span>Processo com pendências</span></div>
+  <div><b>Objeto</b><span>Aprovação de projeto arquitetônico (reforma)</span></div>
+</div>
+
+<div class="legend" aria-label="Legenda">
+  <span class="tag t-def">Defender</span><span class="tag t-neg">Negociar alcance</span><span class="tag t-ext">Trâmite externo</span><span class="tag t-cum">Cumprir</span>
+</div>
+<div class="filters" role="group" aria-label="Filtrar itens">
+  <button type="button" data-f="all" aria-pressed="true">Todos</button>
+  <button type="button" data-f="def" aria-pressed="false">Defender</button>
+  <button type="button" data-f="neg" aria-pressed="false">Negociar</button>
+  <button type="button" data-f="ext" aria-pressed="false">Trâmite externo</button>
+  <button type="button" data-f="cum" aria-pressed="false">Cumprir</button>
+  <button type="button" data-f="open" aria-pressed="false">Pendentes</button>
+</div>
+<p class="progress" id="prog"></p>
+
+<div id="list"></div>
+
+<section class="notes">
+  <h2>Pontos gerais para levar</h2>
+  <ul>
+    <li><b>Base de toda a defesa:</b> o Bloco 01 é reforma de edificação existente. Levar prova da idade do prédio e quadro de áreas antes/depois.</li>
+    <li><b>Campo 2.9</b> do parecer marca "construído até 31/12/2014: Não". Se o prédio existia antes, pedir correção: isso sustenta A03 e A10.</li>
+    <li><b>Campo 2.7</b> marca "imóvel tombado: Não", em contradição com a D06.</li>
+    <li><b>D07</b> cita o Art. 33, §1º da LC 48/2018, mas o texto do artigo não aparece no parecer. Pedir a transcrição.</li>
+    <li>Não contestar tudo: escolher os itens "Defender", levar prova de cada um e mostrar que o restante já está em correção.</li>
+    <li>Registrar "corrigido" só depois de conferir na prancha; "aceito" só com manifestação da analista.</li>
+  </ul>
+</section>
+
+<footer>Fontes: parecer técnico 0116.007382/2026-75 (11/11/2026); ABNT NBR 9050:2020 (versão corrigida 2021); ABNT NBR 16537:2024. Roteiro interno de trabalho, não é documento oficial. As posições sugeridas são orientação para a reunião; a decisão é do responsável técnico.</footer>
+</main>
+
+<script>
+const ITENS=[
+{g:"D",n:"D01",o:"Doc. 1",t:"Requerimento explicando a retificação",p:"cum",
+ ex:"Explicar em requerimento qual a retificação necessária.",
+ fa:["Comparar o projeto aprovado anteriormente com a revisão atual.","Listar as alterações e as pranchas substituídas (quadro antes/depois)."],
+ ev:"Requerimento assinado, com referência à aprovação anterior.",
+ ar:"Cumprir. Antes, confirmar se existe mesmo um projeto aprovado anterior: se não existir, o pedido não é retificação e muda a natureza do requerimento (ligado ao A01)."},
+{g:"D",n:"D02",o:"Doc. 2",t:"CNPJ",p:"cum",
+ ex:"Anexar CNPJ.",fa:["Confirmar a pessoa jurídica requerente e a representação."],ev:"Comprovante de CNPJ coerente com o protocolo.",
+ ar:"Cumprir. Documento simples."},
+{g:"D",n:"D03",o:"Doc. 3",t:"Matrícula do terreno",p:"cum",
+ ex:"Anexar matrícula do terreno.",fa:["Localizar a matrícula do lote usado.","Conferir titularidade, área e limites."],ev:"Matrícula coerente com a implantação.",
+ ar:"Cumprir. Se o imóvel do Estado não tiver matrícula individualizada, apresentar o documento de domínio/cessão equivalente e explicar."},
+{g:"D",n:"D04",o:"Doc. 4",t:"BCI do lote unificado",p:"cum",
+ ex:"Anexar BCI do lote unificado.",fa:["Confirmar se a unificação foi concluída.","Conferir coerência com matrícula e poligonal."],ev:"BCI do lote unificado e identificação cadastral nas pranchas.",
+ ar:"Cumprir. Se a unificação estiver em andamento, informar o número do processo."},
+{g:"D",n:"D05",o:"Doc. 5",t:"RRT registrada de projeto",p:"cum",
+ ex:"Anexar RRT registrada de projeto.",fa:["Conferir atividade, responsável, endereço, escopo e área."],ev:"RRT registrada correspondente à entrega.",
+ ar:"Cumprir."},
+{g:"D",n:"D06",o:"Doc. 6",t:"Anuência do patrimônio (Castelinho FUMBESA)",p:"ext",
+ ex:"A edificação está no mesmo lote do bem \"Castelinho FUMBESA\", com processo de tombamento instaurado pela Resolução nº 11/2009-CEPHC. Apresentar autorização ou anuência dos órgãos de preservação do patrimônio do Acre.",
+ fa:["Abrir já a consulta ao órgão estadual de patrimônio.","Instruir com implantação, vistas e descrição da intervenção."],
+ ev:"Anuência/autorização ou manifestação formal sobre o enquadramento.",
+ ar:"Negociar alcance, não retirar. O próprio parecer marca \"imóvel tombado: Não\" (2.7) e \"termo de autorização: NA\". Perguntar se o tombamento foi concluído. Argumentar que uma reforma interna e de acessibilidade, sem mudança de volume ou fachada, quase não afeta a visibilidade e a ambiência do bem. Pedir que uma declaração simples baste e que corra em paralelo. Conferir se o parecer do Bloco 02 (mesmo lote) fez essa exigência."},
+{g:"D",n:"D07",o:"Doc. 7",t:"Projeto de trânsito aprovado pela RBTRANS",p:"ext",
+ ex:"Anexar projeto de trânsito aprovado pelo RBTRANS, conforme Art. 33, §1º da LC 48/2018.",
+ fa:["Verificar se já existe aprovação ligada ao lote unificado/Bloco 02.","Se não existir, preparar encaminhamento ao RBTRANS."],
+ ev:"Ato de aprovação do RBTRANS com as plantas correspondentes.",
+ ar:"Defender. O parecer cita o artigo, mas o texto não aparece. Pedir a transcrição. Uma reforma sem aumento de área nem mudança de acessos de veículos dificilmente gera novo projeto de trânsito. Se for exigido, propor um único projeto para o lote unificado."},
+{g:"A",n:"A01",o:"Proj. 1",t:"Cópia do projeto aprovado",p:"cum",
+ ex:"Apresentar cópia do projeto arquitetônico aprovado.",fa:["Recuperar o caderno aprovado e o ato de aprovação."],ev:"Cópia com aprovação legível, data e escopo.",
+ ar:"Cumprir. Se não houver aprovação anterior, esclarecer na reunião (ligado ao D01)."},
+{g:"A",n:"A02",o:"Proj. 2",t:"Piso tátil no passeio público",p:"cum",
+ ex:"Apresentar sinalização tátil no passeio que margeia o lote (NBR 9050/2020 e NBR 16537/2024). Lote de esquina.",
+ fa:["Desenhar alerta e direcional nas duas frentes, rebaixamentos e acessos."],ev:"Implantação/passeio com traçado, legenda, cotas e detalhes.",
+ ar:"Cumprir. A NBR 16537:2024 existe e tornou o direcional obrigatório em calçadas com faixa livre a partir de 1,20 m. Não vale contestar."},
+{g:"A",n:"A03",o:"Proj. 3",t:"Vagas de estacionamento",p:"def",
+ ex:"Apresentar estacionamento para o bloco conforme o uso (Art. 69 do Plano Diretor e Cap. III da LC 48/2018).",
+ fa:["Montar quadro de áreas antes/depois (área útil).","Mostrar as vagas existentes do lote unificado."],ev:"Memória de cálculo, quadro de vagas e implantação.",
+ ar:"Defender. O Art. 69, transcrito no próprio parecer, trata de \"empreendimentos a serem construídos\" e calcula pela área útil. Reforma sem acréscimo de área útil não muda a demanda. O estacionamento interno do lote unificado atende o conjunto."},
+{g:"A",n:"A04",o:"Proj. 4",t:"Piso tátil da testada aos pontos de atendimento",p:"neg",
+ ex:"A sinalização tátil deve partir da testada/entrada principal até os principais pontos de interesse e atendimento.",
+ fa:["Mapear os pontos de atendimento ao público.","Garantir continuidade desde o passeio (ligar com A02 e A06)."],ev:"Planta de acessibilidade integrada com legenda.",
+ ar:"Negociar alcance. A NBR 16537 prevê o direcional na ausência ou interrupção da guia de balizamento. Onde paredes já orientam o percurso, limitar o direcional aos trechos sem referência e aos pontos de atendimento."},
+{g:"A",n:"A05",o:"Proj. 5",t:"Patamares da rampa do refeitório",p:"cum",
+ ex:"A rampa de acesso ao refeitório não tem patamar no início e no fim antes dos acessos (NBR 9050, 6.6.4).",
+ fa:["Prever patamares de no mínimo 1,20 m no início e no fim.","A varredura das portas não pode invadir o patamar."],ev:"Planta ampliada e corte cotados.",
+ ar:"Cumprir. Correção de desenho."},
+{g:"A",n:"A06",o:"Proj. 6",t:"Acesso vertical acessível do passeio ao auditório",p:"neg",
+ ex:"Não existe circulação vertical acessível do passeio externo ao auditório (NBR 9050, 6.2 e 6.3).",
+ fa:["Conferir se a REV02 (10/11) já resolve com a rampa de acesso ao auditório.","Mostrar a rota completa: passeio → acesso → auditório."],ev:"Implantação, planta e corte com níveis e geometria.",
+ ar:"Negociar. Se a REV02 já tem a rampa, o argumento é \"resolvido na revisão de 10/11\". Levar as folhas da REV02. Atenção: não há comprovação de que a REV02 foi a versão analisada."},
+{g:"A",n:"A07",o:"Proj. 7",t:"Pilar no patamar da rampa do palco",p:"def",
+ ex:"A rampa do palco do auditório não atende a NBR 9050: o pilar no patamar invade a área mínima de giro da cadeira de rodas.",
+ fa:["Confirmar no corte a altura do palco.","Redesenhar a rampa pela regra própria do palco, com chegada direta ao piso do palco e o pilar fora da área de manobra.","Não propor remoção do pilar sem avaliação estrutural."],
+ ev:"Planta ampliada com pilar, rampa e área de manobra cotados; corte.",
+ ar:"Defender com solução pronta. NBR 9050, 10.4.3 (p. 127): rampa de palco com largura mínima de 0,90 m, inclinação até 1:6 (16,66%) para altura até 0,60 m (1:10 acima disso), com guia de balizamento e sem exigir corrimão nem guarda-corpo. O 10.4.3 não fala em patamar, e o 6.6.2.1 trata essas rampas como caso à parte. Cuidado: a dispensa de patamar é interpretação; por isso levar junto o esboço da rampa a 1:6, mais curta, com o pilar fora da manobra."},
+{g:"A",n:"A08",o:"Proj. 8",t:"Alarme de emergência nos sanitários PCD",p:"cum",
+ ex:"Apresentar nos detalhes dos sanitários PCD o dispositivo de alarme de emergência (NBR 9050, 5.6.4.1).",
+ fa:["Inserir o dispositivo no detalhe e nas elevações.","Compatibilizar com instalações elétricas."],ev:"Detalhes e elevações com posição e especificação.",
+ ar:"Cumprir. Rápido e barato."},
+{g:"A",n:"A09",o:"Proj. 9",t:"Varredura das portas dos boxes (WC masc. e fem. 02)",p:"cum",
+ ex:"Apresentar área de varredura das portas de todos os boxes dos sanitários comuns.",
+ fa:["Desenhar os arcos e o sentido de abertura de todas as portas."],ev:"Plantas ampliadas com portas, louças e áreas livres.",
+ ar:"Cumprir. Correção de desenho; fazer junto com o A10."},
+{g:"A",n:"A10",o:"Proj. 10",t:"Vão e área livre dos boxes comuns",p:"def",
+ ex:"Boxes comuns devem ter vão livre mínimo de 0,80 m e área livre de Ø 0,60 m (NBR 9050, 7.10.1). Em edificações existentes, admite-se vão de 0,60 m.",
+ fa:["Cotar os vãos efetivos e a área livre de cada box.","Confirmar se os boxes são mantidos ou refeitos."],ev:"Cotas de vão e área livre em cada tipologia.",
+ ar:"Defender. A exceção para edificação existente (vão de 0,60 m) está no próprio texto transcrito no parecer. Vale se os boxes forem mantidos; perde força se forem demolidos e refeitos. Mostrar a área livre de Ø 0,60 m."}
+];
+const LBL={def:"Defender",neg:"Negociar alcance",ext:"Trâmite externo",cum:"Cumprir"};
+const KEY="parecer-seasdh-b01-feitos";
+let feitos={};try{feitos=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(feitos))}catch(e){}};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const list=document.getElementById("list");
+function card(i){return `<details data-p="${i.p}" data-n="${i.n}"${feitos[i.n]?' class="done"':''}>
+<summary><span class="num">${i.n}</span><span class="tt">${esc(i.t)}<small>Item original: ${i.o}</small></span><span class="tag t-${i.p}">${LBL[i.p]}</span></summary>
+<div class="body"><h3>O que o parecer pede</h3><p>${esc(i.ex)}</p>
+<h3>O que tratar</h3><ul>${i.fa.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+<h3>Como demonstrar</h3><p>${esc(i.ev)}</p>
+<h3>Posição na reunião</h3><div class="arg ${i.p}">${esc(i.ar)}</div>
+<label class="check"><input type="checkbox" data-n="${i.n}"${feitos[i.n]?" checked":""}> Tratado</label></div></details>`}
+list.innerHTML=`<h2 class="grp">Documentação <em>7 itens</em></h2>`+ITENS.filter(i=>i.g==="D").map(card).join("")+
+`<h2 class="grp">Projeto arquitetônico <em>10 itens</em></h2>`+ITENS.filter(i=>i.g==="A").map(card).join("");
+const prog=()=>{const n=ITENS.filter(i=>feitos[i.n]).length;document.getElementById("prog").textContent=`${n} de ${ITENS.length} itens marcados como tratados`};
+list.addEventListener("change",e=>{const c=e.target.closest("input[type=checkbox]");if(!c)return;feitos[c.dataset.n]=c.checked;if(!c.checked)delete feitos[c.dataset.n];save();c.closest("details").classList.toggle("done",c.checked);prog();apply()});
+let filtro="all";
+function apply(){list.querySelectorAll("details").forEach(d=>{const ok=filtro==="all"||(filtro==="open"?!feitos[d.dataset.n]:d.dataset.p===filtro);d.hidden=!ok});
+list.querySelectorAll("h2.grp").forEach(h=>{let s=h.nextElementSibling,v=false;while(s&&s.tagName==="DETAILS"){if(!s.hidden)v=true;s=s.nextElementSibling}h.hidden=!v})}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{filtro=b.dataset.f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));apply()}));
+window.addEventListener("beforeprint",()=>list.querySelectorAll("details").forEach(d=>d.open=true));
+prog();
+</script>
+</body>
+</html>
