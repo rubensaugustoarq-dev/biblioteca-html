@@ -46,6 +46,19 @@ summary::-webkit-details-marker{display:none}
 .notes{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
 .notes h2{font-size:18px;margin:0 0 8px}.notes ul{margin:0;padding-left:20px;color:#36403a}
 table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 14px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#577260;font-weight:600}tr.tot td{font-weight:600;background:var(--bg)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.gal button{font:inherit;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:0;cursor:zoom-in;overflow:hidden;color:var(--ink)}
+.gal button:hover{border-color:#9fb3a5}.gal button:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.gal img{display:block;width:100%;height:170px;object-fit:contain;background:#fff;border-bottom:1px solid var(--line)}
+.gal span{display:block;padding:9px 12px 11px;font-size:14px;line-height:1.35}.gal b{display:inline-block;font:600 12px ui-monospace,Consolas,monospace;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-right:6px}
+dialog#lb{width:min(1200px,96vw);max-height:94vh;border:0;border-radius:16px;padding:0;background:#fff;color:var(--ink)}
+dialog#lb::backdrop{background:rgba(20,26,22,.72)}
+.lbbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;font-size:15px;flex-wrap:wrap}
+.lbact{display:flex;gap:6px;align-items:center}.lbact a{font-size:13px;color:var(--brand);margin-right:6px;font-weight:500}
+.lbact button{font:inherit;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--bg);cursor:pointer}
+.lbimg{overflow:auto;max-height:calc(94vh - 120px);background:#fff}.lbimg img{display:block;width:100%;height:auto}
+#lbnote{margin:0;padding:10px 14px 14px;font-size:14px;color:#36403a;border-top:1px solid var(--line)}
+.vr{font:inherit;font-size:14px;margin-top:10px;margin-right:6px;background:var(--card);border:1px solid var(--brand);color:var(--brand);border-radius:999px;padding:5px 12px;cursor:zoom-in}
 footer{margin-top:40px;font-size:13px;color:#707b72}
 a.back{color:var(--brand);text-decoration:none;font-size:14px}
 @media (max-width:600px){summary{grid-template-columns:auto 1fr}.tag{grid-column:2;justify-self:start}.body{padding-left:18px}}
@@ -118,10 +131,30 @@ a.back{color:var(--brand);text-decoration:none;font-size:14px}
   </ul>
 </section>
 
+<section class="notes" id="recortes">
+  <h2>Recortes do projeto</h2>
+  <p style="color:var(--mut);margin:0 0 14px;font-size:14px">Folha ARQ 08/08 – Detalhes de acessibilidade (10/11/2026) e planta de implantação. Toque na imagem para ampliar.</p>
+  <div class="gal" id="gal"></div>
+</section>
+<dialog id="lb" aria-label="Recorte ampliado">
+  <div class="lbbar"><span id="lbcap"></span><span class="lbact"><a id="lbopen" target="_blank" rel="noopener">Abrir em tamanho real ↗</a><button type="button" id="lbprev" aria-label="Anterior">‹</button><button type="button" id="lbnext" aria-label="Próximo">›</button><button type="button" id="lbclose" aria-label="Fechar">✕</button></span></div>
+  <div class="lbimg"><img id="lbimg" alt=""></div>
+  <p id="lbnote"></p>
+</dialog>
+
 <footer>Fontes: parecer técnico 0116.007382/2026-75 (11/11/2026); pranchas ARQ 01/06–06/06 (18/03/2025) e 01/07–07/07 (10/11/2026); Relatório Técnico para Manutenção do Castelinho (SEHURB, 19/03/2025); ABNT NBR 9050:2020 (versão corrigida 2021); ABNT NBR 16537:2024. Roteiro interno de trabalho, não é documento oficial. As posições sugeridas são orientação para a reunião; a decisão é do responsável técnico.</footer>
 </main>
 
 <script>
+const REC=[
+{f:"a05-3d-rampa-refeitorio.jpg",i:"A05",t:"Rampa do refeitório – 3D",n:"Rampa com patamares no início e no fim, corrimão duplo e alerta tátil. Detalhe 1 da ARQ 08/08."},
+{f:"a05-planta-rampa-refeitorio.jpg",i:"A05",t:"Rampa do refeitório – planta e notas",n:"i = 3,33% (0,20 m em 6,00 m), largura 2,00 m, patamares de no mínimo 1,20 m (6.6.4); patamar superior 2,00 × 1,50 m diante da porta P12, de correr. Detalhe 2 da ARQ 08/08."},
+{f:"a05-elevacao-rampa-refeitorio.jpg",i:"A05",t:"Rampa do refeitório – elevação",n:"Corrimãos a 0,70 e 0,92 m, prolongados 0,30 m. Detalhe 3 da ARQ 08/08."},
+{f:"a07-3d-rampa-palco.jpg",i:"A07",t:"Rampa do palco – 3D",n:"Rampa em madeira com corrimão duplo e o shaft no canto. As notas do 3D falam em largura 1,40 m e 15,38%: conferir com a planta. Detalhe 5 da ARQ 08/08."},
+{f:"a07-planta-rampa-palco.jpg",i:"A07",t:"Rampa do palco – planta de execução",n:"Lance 1 com 16,66% e lance 2 com 7,51%, patamar intermediário e shaft 0,45 × 0,41 m no canto. Conferir se o shaft (antigo pilar) fica fora da área de manobra. Detalhe 4 da ARQ 08/08."},
+{f:"d06-locacao.jpg",i:"D06",t:"Locação no lote unificado",n:"Lote de 13.754,07 m² com áreas a manter, a construir e a demolir. Serve para mostrar a relação da ampliação com o Castelinho. Detalhe 6 da ARQ 08/08."},
+{f:"d06-a03-implantacao.jpg",i:"D06 · A03",t:"Planta de implantação",n:"Implantação cotada do Bloco 01 entre a Av. Nações Unidas e a R. Duque de Caxias. Usar para medir a distância da ampliação até o Castelinho e locar as vagas."}
+];
 const ITENS=[
 {g:"D",n:"D01",o:"Doc. 1",t:"Requerimento explicando a retificação",p:"cum",
  ex:"Explicar em requerimento qual a retificação necessária.",
@@ -169,7 +202,7 @@ const ITENS=[
 {g:"A",n:"A05",o:"Proj. 5",t:"Patamares da rampa do refeitório",p:"cum",
  ex:"A rampa de acesso ao refeitório não tem patamar no início e no fim antes dos acessos (NBR 9050, 6.6.4).",
  fa:["Prever patamares de no mínimo 1,20 m no início e no fim.","A varredura das portas não pode invadir o patamar."],ev:"Planta ampliada e corte cotados.",
- ar:"Cumprir. Correção de desenho."},
+ ar:"Cumprir — já tratado no detalhe ARQ 08/08: i = 3,33% (0,20 m em 6,00 m), largura 2,00 m, patamares de 1,20 m no início e no fim, patamar superior 2,00 × 1,50 m diante da porta P12 (de correr, sem varredura sobre o patamar). Levar o detalhe como prova."},
 {g:"A",n:"A06",o:"Proj. 6",t:"Acesso vertical acessível do passeio ao auditório",p:"neg",
  ex:"Não existe circulação vertical acessível do passeio externo ao auditório (NBR 9050, 6.2 e 6.3).",
  fa:["Conferir se a REV02 (10/11) já resolve com a rampa de acesso ao auditório.","Mostrar a rota completa: passeio → acesso → auditório."],ev:"Implantação, planta e corte com níveis e geometria.",
@@ -178,7 +211,7 @@ const ITENS=[
  ex:"A rampa do palco do auditório não atende a NBR 9050: o pilar no patamar invade a área mínima de giro da cadeira de rodas.",
  fa:["Altura do palco: 40 cm no projeto anterior (prancha 04/06); no novo parece mantida em 0,40 m — confirmar no corte 05/07.","Redesenhar a rampa pela regra própria do palco, com chegada direta ao piso do palco e o pilar fora da área de manobra.","Não propor remoção do pilar sem avaliação estrutural."],
  ev:"Planta ampliada com pilar, rampa e área de manobra cotados; corte.",
- ar:"Defender com solução pronta. NBR 9050, 10.4.3 (p. 127): rampa de palco com largura mínima de 0,90 m, inclinação até 1:6 (16,66%) para altura até 0,60 m (1:10 acima disso), com guia de balizamento e sem exigir corrimão nem guarda-corpo. O 10.4.3 não fala em patamar, e o 6.6.2.1 trata essas rampas como caso à parte. Cuidado: a dispensa de patamar é interpretação; por isso levar junto o esboço da rampa a 1:6, mais curta, com o pilar fora da manobra."},
+ ar:"Defender com solução pronta. NBR 9050, 10.4.3 (p. 127): rampa de palco com largura mínima de 0,90 m, inclinação até 1:6 (16,66%) para altura até 0,60 m (1:10 acima disso), com guia de balizamento e sem exigir corrimão nem guarda-corpo. O detalhe ARQ 08/08 já usa essa regra (palco com desnível de 0,40 m). Antes da reunião, acertar as divergências do detalhe: a planta mostra lance 1 com 16,66% e lance 2 com 7,51%, mas as notas falam em dois lances de 15,38%, largura de 1,20 m em uma nota e 1,40 m em outra, e chegada na cota +0,34 com desnível total de 0,40 m. Conferir também se o shaft de 0,45 × 0,41 m (antigo pilar) ficou fora da área de manobra do patamar."},
 {g:"A",n:"A08",o:"Proj. 8",t:"Alarme de emergência nos sanitários PCD",p:"cum",
  ex:"Apresentar nos detalhes dos sanitários PCD o dispositivo de alarme de emergência (NBR 9050, 5.6.4.1).",
  fa:["Inserir o dispositivo no detalhe e nas elevações.","Compatibilizar com instalações elétricas."],ev:"Detalhes e elevações com posição e especificação.",
@@ -198,13 +231,14 @@ let feitos={};try{feitos=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(feitos))}catch(e){}};
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const list=document.getElementById("list");
+function recBtns(n){if(typeof REC==="undefined")return "";return REC.map((r,k)=>r.i.includes(n)?`<button type="button" class="vr" data-k="${k}">Ver recorte: ${esc(r.t)}</button>`:"").join("")}
 function card(i){return `<details data-p="${i.p}" data-n="${i.n}"${feitos[i.n]?' class="done"':''}>
 <summary><span class="num">${i.n}</span><span class="tt">${esc(i.t)}<small>Item original: ${i.o}</small></span><span class="tag t-${i.p}">${LBL[i.p]}</span></summary>
 <div class="body"><h3>O que o parecer pede</h3><p>${esc(i.ex)}</p>
 <h3>O que tratar</h3><ul>${i.fa.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
 <h3>Como demonstrar</h3><p>${esc(i.ev)}</p>
 <h3>Posição na reunião</h3><div class="arg ${i.p}">${esc(i.ar)}</div>
-<label class="check"><input type="checkbox" data-n="${i.n}"${feitos[i.n]?" checked":""}> Tratado</label></div></details>`}
+${recBtns(i.n)}<br><label class="check"><input type="checkbox" data-n="${i.n}"${feitos[i.n]?" checked":""}> Tratado</label></div></details>`}
 list.innerHTML=`<h2 class="grp">Documentação <em>7 itens</em></h2>`+ITENS.filter(i=>i.g==="D").map(card).join("")+
 `<h2 class="grp">Projeto arquitetônico <em>10 itens</em></h2>`+ITENS.filter(i=>i.g==="A").map(card).join("");
 const prog=()=>{const n=ITENS.filter(i=>feitos[i.n]).length;document.getElementById("prog").textContent=`${n} de ${ITENS.length} itens marcados como tratados`};
@@ -215,6 +249,16 @@ list.querySelectorAll("h2.grp").forEach(h=>{let s=h.nextElementSibling,v=false;w
 document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{filtro=b.dataset.f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));apply()}));
 window.addEventListener("beforeprint",()=>list.querySelectorAll("details").forEach(d=>d.open=true));
 prog();
+
+const gal=document.getElementById("gal"),lb=document.getElementById("lb");let cur=0;
+gal.innerHTML=REC.map((r,k)=>`<button type="button" data-k="${k}"><img src="recortes/${r.f}" alt="${esc(r.t)}" loading="lazy"><span><b>${r.i}</b>${esc(r.t)}</span></button>`).join("");
+function show(k){cur=(k+REC.length)%REC.length;const r=REC[cur];document.getElementById("lbimg").src="recortes/"+r.f;document.getElementById("lbimg").alt=r.t;
+document.getElementById("lbcap").textContent=r.i+" · "+r.t;document.getElementById("lbnote").textContent=r.n;document.getElementById("lbopen").href="recortes/"+r.f;if(!lb.open)lb.showModal()}
+gal.addEventListener("click",e=>{const b=e.target.closest("button[data-k]");if(b)show(+b.dataset.k)});
+list.addEventListener("click",e=>{const b=e.target.closest(".vr");if(b){e.preventDefault();show(+b.dataset.k)}});
+document.getElementById("lbclose").onclick=()=>lb.close();document.getElementById("lbprev").onclick=()=>show(cur-1);document.getElementById("lbnext").onclick=()=>show(cur+1);
+lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+document.addEventListener("keydown",e=>{if(!lb.open)return;if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1)});
 </script>
 </body>
 </html>
