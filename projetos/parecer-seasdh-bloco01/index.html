@@ -60,6 +60,7 @@ dialog#lb::backdrop{background:rgba(20,26,22,.72)}
 #lbnote{margin:0;padding:10px 14px 14px;font-size:14px;color:#36403a;border-top:1px solid var(--line)}
 .vr{font:inherit;font-size:14px;margin-top:10px;margin-right:6px;background:var(--card);border:1px solid var(--brand);color:var(--brand);border-radius:999px;padding:5px 12px;cursor:zoom-in}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:14px 0 26px}.tabs a{padding:9px 16px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--mut);font-size:15px;border:1px solid transparent;margin-bottom:-1px}.tabs a[aria-current="page"]{background:var(--card);border-color:var(--line);border-bottom-color:var(--card);color:var(--ink);font-weight:600}
+a.dl{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;border-radius:999px;padding:9px 18px;font-weight:600;font-size:15px}a.dl:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
 footer{margin-top:40px;font-size:13px;color:#707b72}
 a.back{color:var(--brand);text-decoration:none;font-size:14px}
 @media (max-width:600px){summary{grid-template-columns:auto 1fr}.tag{grid-column:2;justify-self:start}.body{padding-left:18px}}
@@ -133,6 +134,19 @@ a.back{color:var(--brand);text-decoration:none;font-size:14px}
   </ul>
 </section>
 
+<section class="notes" id="campo">
+  <h2>Para levar a campo</h2>
+  <p style="margin:0 0 10px;color:#36403a">Arquivos da solução aprovada que será executada. Abra no celular na obra.</p>
+  <p style="margin:0"><a class="dl" href="arquivos/SEASDH-Auditorio-Rampa-do-Palco-aprovado-SEINFRA.pdf" target="_blank" rel="noopener">⬇ Folha A103 – Rampa do palco (PDF aprovado)</a></p>
+  <ul style="margin-top:10px">
+    <li>Lance único i = 16,66% (sobe), largura 1,20 m, projeção 2,41 m.</li>
+    <li>Saída na cota −0,58/−0,60; patamar 3,00 × 1,65 m na cota −0,20; chegada nivelada com o palco, sem ressaltos.</li>
+    <li>Shaft 0,45 × 0,41 m no canto, fora da rampa.</li>
+    <li>Corrimão duplo em madeira tratada a 0,70 e 0,92 m, afastado no mínimo 4 cm da parede, empunhadura contínua.</li>
+    <li>Piso vinílico comercial em manta, fosco, antiderrapante R11.</li>
+  </ul>
+</section>
+
 <section class="notes" id="recortes">
   <h2>Recortes do projeto</h2>
   <p style="color:var(--mut);margin:0 0 14px;font-size:14px">Folha ARQ 08/08 – Detalhes de acessibilidade (10/11/2026) e planta de implantação. Toque na imagem para ampliar.</p>
@@ -149,6 +163,8 @@ a.back{color:var(--brand);text-decoration:none;font-size:14px}
 
 <script>
 const REC=[
+{f:"a07-rampa-palco-aprovada-print.jpg",i:"A07",t:"Rampa do palco APROVADA – planta (a executar)",n:"Solução aprovada pela analista da SEINFRA e que será executada: lance único i = 16,66% (sobe), largura 1,20 m, projeção 2,41 m, saindo da cota −0,58/−0,60 para o patamar −0,20 (3,00 × 1,65 m); shaft 0,45 × 0,41 m no canto. Arquivo completo: A103 (PDF)."},
+{f:"a07-rampa-palco-aprovada-A103.jpg",i:"A07",t:"Folha A103 aprovada – 3D e planta do palco",n:"Folha A103 completa: 3D da rampa (corrimão duplo 0,70/0,92 m, piso vinílico R11, chegada nivelada com o palco sem ressaltos) e planta baixa do palco do auditório (1:100). Baixar o PDF pelo card A07 ou pela seção Para levar a campo."},
 {f:"a05-3d-rampa-refeitorio.jpg",i:"A05",t:"Rampa do refeitório – 3D",n:"Rampa com patamares no início e no fim, corrimão duplo e alerta tátil. Detalhe 1 da ARQ 08/08."},
 {f:"a05-planta-rampa-refeitorio.jpg",i:"A05",t:"Rampa do refeitório – planta e notas",n:"i = 3,33% (0,20 m em 6,00 m), largura 2,00 m, patamares de no mínimo 1,20 m (6.6.4); patamar superior 2,00 × 1,50 m diante da porta P12, de correr. Detalhe 2 da ARQ 08/08."},
 {f:"a05-elevacao-rampa-refeitorio.jpg",i:"A05",t:"Rampa do refeitório – elevação",n:"Corrimãos a 0,70 e 0,92 m, prolongados 0,30 m. Detalhe 3 da ARQ 08/08."},
@@ -209,11 +225,11 @@ const ITENS=[
  ex:"Não existe circulação vertical acessível do passeio externo ao auditório (NBR 9050, 6.2 e 6.3).",
  fa:["Conferir se a REV02 (10/11) já resolve com a rampa de acesso ao auditório.","Mostrar a rota completa: passeio → acesso → auditório."],ev:"Implantação, planta e corte com níveis e geometria.",
  ar:"Negociar. Se a REV02 já tem a rampa, o argumento é \"resolvido na revisão de 10/11\". Levar as folhas da REV02. Atenção: não há comprovação de que a REV02 foi a versão analisada."},
-{g:"A",n:"A07",o:"Proj. 7",t:"Pilar no patamar da rampa do palco",p:"def",
+{g:"A",n:"A07",o:"Proj. 7",t:"Rampa do palco – APROVADA (executar A103)",p:"cum",
  ex:"A rampa do palco do auditório não atende a NBR 9050: o pilar no patamar invade a área mínima de giro da cadeira de rodas.",
  fa:["Altura do palco: 40 cm no projeto anterior (prancha 04/06); no novo parece mantida em 0,40 m — confirmar no corte 05/07.","Redesenhar a rampa pela regra própria do palco, com chegada direta ao piso do palco e o pilar fora da área de manobra.","Não propor remoção do pilar sem avaliação estrutural."],
  ev:"Planta ampliada com pilar, rampa e área de manobra cotados; corte.",
- ar:"Defender com solução pronta. NBR 9050, 10.4.3 (p. 127): rampa de palco com largura mínima de 0,90 m, inclinação até 1:6 (16,66%) para altura até 0,60 m (1:10 acima disso), com guia de balizamento e sem exigir corrimão nem guarda-corpo. O detalhe ARQ 08/08 já usa essa regra (palco com desnível de 0,40 m). Antes da reunião, acertar as divergências do detalhe: a planta mostra lance 1 com 16,66% e lance 2 com 7,51%, mas as notas falam em dois lances de 15,38%, largura de 1,20 m em uma nota e 1,40 m em outra, e chegada na cota +0,34 com desnível total de 0,40 m. Conferir também se o shaft de 0,45 × 0,41 m (antigo pilar) ficou fora da área de manobra do patamar."},
+ ar:"APROVADO pela analista da SEINFRA – executar conforme a folha A103 (arquivo em Para levar a campo). Solução: lance único com i = 16,66% (1:6, dentro do limite do item 10.4.3 da NBR 9050 para palco até 0,60 m), largura 1,20 m, projeção 2,41 m, patamar de 3,00 × 1,65 m na cota −0,20, shaft 0,45 × 0,41 m no canto, corrimão duplo a 0,70 e 0,92 m e chegada nivelada com o palco. Ao atualizar as pranchas do projeto legal (ARQ 07/07 e 08/08), copiar exatamente essa solução e remover as notas antigas (lance 2 com 7,51%, 15,38%, largura 1,40 m)."},
 {g:"A",n:"A08",o:"Proj. 8",t:"Alarme de emergência nos sanitários PCD",p:"cum",
  ex:"Apresentar nos detalhes dos sanitários PCD o dispositivo de alarme de emergência (NBR 9050, 5.6.4.1).",
  fa:["Inserir o dispositivo no detalhe e nas elevações.","Compatibilizar com instalações elétricas."],ev:"Detalhes e elevações com posição e especificação.",
