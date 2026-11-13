@@ -81,16 +81,33 @@ footer{margin-top:30px;font-size:13px;color:#707b72}
 </section>
 
 <section>
-  <h2>Onde aplicar no projeto</h2>
-  <p>Sanitários acessíveis que aparecem nas pranchas da revisão de 10/11/2026 (03/07, 04/07, 05/07 e 07/07):</p>
-  <ul>
-    <li><b>W.C. PCD</b> junto à copa (6,07 m²);</li>
-    <li><b>WC Femin. PCD</b> e <b>WC Mas. PCD</b> (detalhes de banheiros e cortes EE/FF);</li>
-    <li><b>W.C. PCD do auditório</b> (detalhe "DTC. PCD – Auditório");</li>
-    <li>o <b>W.C. PCR 02</b> que aparece no corte da prancha 05/07.</li>
-  </ul>
-  <p class="warn"><b>Conferir a lista final</b> nas plantas antes de desenhar: cada sanitário acessível precisa do alarme, sem exceção.</p>
+  <h2>Onde aplicar no projeto · situação</h2>
+  <p>Todos os sanitários acessíveis da revisão de 10/11/2026 precisam do alarme (AE junto à bacia a 0,40 m + SE externo a 2,30 m).</p>
+  <table>
+    <thead><tr><th>Sanitário</th><th>Situação</th></tr></thead>
+    <tbody>
+      <tr><td>W.C. PCR 02</td><td>✅ AE e SE já desenhados</td></tr>
+      <tr><td>PCD – Auditório (2 sanitários)</td><td>✅ AE a 0,40 m e SE a 2,30 m já desenhados</td></tr>
+      <tr><td>W.C. Fem. (hall da ampliação)</td><td>🔴 Falta – desenhar conforme redline abaixo</td></tr>
+      <tr><td>W.C. Mas. (hall da ampliação)</td><td>🔴 Falta – desenhar conforme redline abaixo</td></tr>
+      <tr><td>W.C. PCD junto à copa · WC Femin. PCD · WC Mas. PCD</td><td>⚪ Conferir nas pranchas</td></tr>
+    </tbody>
+  </table>
 </section>
+
+<section>
+  <h2>Redline – W.C. Fem. e W.C. Mas. do hall</h2>
+  <p>Sanitários da área ampliada, projetados como acessíveis em reforma (NBR 9050, Figura 100). Desenhar nas <b>plantas</b> e nas <b>vistas/elevações</b> da prancha de detalhes:</p>
+  <ul>
+    <li><b>Planta:</b> AE na parede lateral junto à bacia (lado da barra), etiqueta "AE h=0,40 m"; SE sobre cada porta P3, na face do hall, etiqueta "SE h=2,30 m" – um por porta.</li>
+    <li><b>Vista da parede da bacia:</b> AE cotado a 0,40 m do piso acabado, à frente da bacia, ao alcance de quem está sentado ou caído.</li>
+    <li><b>Vista do hall (portas P3):</b> SE sobre cada porta, cotado a 2,30 m.</li>
+    <li>Se aparecerem nos cortes EE/FF, incluir os dispositivos lá também.</li>
+    <li>Marcar os 2 novos pontos na planta de execução para o projeto elétrico.</li>
+  </ul>
+  <div class="gal" id="g3"></div>
+</section>
+
 
 <section>
   <h2>Como fazer nas pranchas</h2>
@@ -145,7 +162,7 @@ Referência completa: https://rubensaugustoarq-dev.github.io/biblioteca-html/pro
 
 Tarefa: inserir o alarme de emergência em TODOS os sanitários acessíveis do projeto, conforme ABNT NBR 9050:2020, 5.6.
 
-1. Liste os sanitários acessíveis que existem nas pranchas (esperados: W.C. PCD junto à copa, WC Femin. PCD, WC Mas. PCD, W.C. PCD do auditório, W.C. PCR 02). Confirme comigo a lista antes de desenhar.
+1. Já desenhados: W.C. PCR 02 e os 2 sanitários PCD do auditório (AE 0,40 m + SE 2,30 m). FALTAM: W.C. Fem. e W.C. Mas. do hall da ampliação – seguir o redline da página (AE junto à bacia, SE sobre cada porta P3 na face do hall), em planta e nas vistas. Conferir também W.C. PCD da copa, WC Femin. PCD e WC Mas. PCD.
 2. Em cada um, nos detalhes da prancha 07/07:
    - planta ampliada: botoeira ao lado da bacia, ao alcance de pessoa sentada ou caída;
    - elevação: botoeira cotada a 0,40 m do piso acabado;
@@ -186,10 +203,11 @@ Regras:
 <script>
 const G1=[["a08/nbr9050-5-6-1.jpg","5.6.1 – Condições gerais (p. 50)"],["a08/nbr9050-5-6-2-a-5-6-4-1-fig67.jpg","5.6.2 a 5.6.4.1 e Figura 67 (p. 51)"]];
 const G2=[["a08/arq07-sanitarios-pcd-detalhes.jpg","W.C. PCD, elevação, cortes EE/FF e PCD do auditório"],["a08/arq07-banheiros-plantas.jpg","Plantas dos banheiros e banheiros coletivos"],["a08/arq07-det-sanitario-pcd.jpg","Det. Sanitário PCD e elevação da pia"]];
+const G3=[["a08/redline-wc-fem-mas-planta.jpg","Redline em planta – W.C. Fem. e W.C. Mas."],["a08/redline-wc-fem-mas-vistas.jpg","Vistas esquemáticas – AE a 0,40 m e SE a 2,30 m"]];
 const lb=document.getElementById("lb");
 function fill(id,arr){const el=document.getElementById(id);el.innerHTML=arr.map(([f,t])=>`<button type="button" data-f="${f}" data-t="${t}"><img src="${f}" alt="${t}" loading="lazy"><span>${t}</span></button>`).join("");
 el.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.getElementById("lbimg").src=b.dataset.f;document.getElementById("lbimg").alt=b.dataset.t;document.getElementById("lbcap").textContent=b.dataset.t;document.getElementById("lbopen").href=b.dataset.f;lb.showModal()})}
-fill("g1",G1);fill("g2",G2);
+fill("g1",G1);fill("g2",G2);fill("g3",G3);
 document.getElementById("lbclose").onclick=()=>lb.close();lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
 document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",async()=>{const t=document.getElementById(b.dataset.copy).textContent;try{await navigator.clipboard.writeText(t);b.textContent="Copiado ✓"}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.copy));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selecionado – copie"}setTimeout(()=>b.textContent=b.dataset.copy==="ia"?"Copiar pedido":b.dataset.copy==="nota"?"Copiar nota":"Copiar resposta",1800)}));
 </script>
